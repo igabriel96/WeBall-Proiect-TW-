@@ -14,6 +14,12 @@ switch($action){
         case "reviews":
                 require_once('views/reviews.php');
                 break;
+	case "poll":
+         	require_once('views/poll.php');
+   	        break;
+    	case "pollresults":
+     	        require_once('views/pollresults.php');
+    		break;
 	case "clasament":
 		$sql='Select distinct id_grupa from echipe order by id_grupa asc';
 		$statement_id_grupa=oci_parse($db,$sql);

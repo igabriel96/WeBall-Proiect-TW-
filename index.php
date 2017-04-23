@@ -11,6 +11,12 @@ switch($action){
 	case "matches":
 		require_once('views/matches.php');
 		break;
+	case "clasament":
+		$sql='Select distinct id_grupa from echipe order by id_grupa asc';
+		$statement_id_grupa=oci_parse($db,$sql);
+		oci_execute($statement_id_grupa);
+		require_once('views/clasament.php');
+		break;
 	case "sterge_echipa":
 		if(isset($_REQUEST['filter_on']))
 		{

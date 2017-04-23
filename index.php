@@ -55,6 +55,18 @@ switch($action){
 	case "optiuni_organizatorii":
 		require_once('views/optiuni_organizatorii.php');
 		break;
+	case "optiuni_conturi":
+		require_once('views/optiuni_conturi.php');
+		break;	
+	case "cauta_cont":
+		require_once('views/cauta_cont.php');
+		break;
+	case "elimina_conturi":
+		require_once('views/elimina_conturi.php');
+		break;	
+	case "vizualizare_detalii":
+		require_once('views/vizualizare_detalii.php');
+		break;
 	case "update_scor_meci":
 		require_once('views/update_scor_meci.php');
 		if (isset($_REQUEST['set_score']))

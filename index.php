@@ -11,6 +11,9 @@ switch($action){
 	case "matches":
 		require_once('views/matches.php');
 		break;
+        case "reviews":
+                require_once('views/reviews.php');
+                break;
 	case "clasament":
 		$sql='Select distinct id_grupa from echipe order by id_grupa asc';
 		$statement_id_grupa=oci_parse($db,$sql);

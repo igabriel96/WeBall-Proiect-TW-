@@ -8,7 +8,49 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "sterge_echipa":
+		if(isset($_REQUEST['filter_on']))
+		{
+			$sql="Select id,nume,tara,id_grupa from echipe where upper(nume)=upper('";
+			$sql.=$_REQUEST['nume'];
+			$sql.="')";
+			$statement=oci_parse($db,$sql);
+			oci_execute($statement);
+		}
+		require_once('views/sterge_echipa.php');
+		break;
+	case "inregistreaza_jucator":
+		$sql='Select nume from nationalitate';
+		$tari=oci_parse($db,$sql);
+		oci_execute($tari);
+		$sql='Select nume from echipe';
+		$echipe=oci_parse($db,$sql);
+		oci_execute($echipe);
+		require_once('views/inregistreaza_jucator.php');
+		break;
+	case "inregistreaza_echipa":
+		require_once('views/inregistreaza_echipa.php');
+		break;
+	case "optiuni_organizatorii":
+		require_once('views/optiuni_organizatorii.php');
+		break;
+	case "update_scor_meci":
+		require_once('views/update_scor_meci.php');
+		if (isset($_REQUEST['set_score']))
+		{
+			header("Location: index.php?action=update_scoruri");
+			die();
+		}
 
+		break;
+	case "update_scoruri":
+			$sql="select meciuri.id as ID, data_meci as DATA ,e1.nume ECHIPA_GAZDA,e2.nume as ECHIPA_OASPETE,rezultat1 as REZ1,rezultat2 as REZ2 from meciuri join echipe e1 on meciuri.id_echipa1=e1.id join echipe e2 on meciuri.id_echipa2=e2.id where upper(e1.nume)=upper('";
+			$sql.=$_REQUEST['echipa_gazda']."') and upper(e2.nume)=upper('".$_REQUEST['echipa_oaspete']."')";
+			$statement=oci_parse($db ,$sql);
+			$result=oci_execute($statement);
+			require_once('views/update_scoruri.php');
+
+		break;
 	case "register":
 		require_once('class/class.user.php');
 

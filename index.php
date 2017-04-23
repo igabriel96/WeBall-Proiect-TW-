@@ -17,7 +17,7 @@ switch($action){
 		oci_execute($statement_id_grupa);
 		require_once('views/clasament.php');
 		break;
-	case "players"://razvan
+	case "players":
 		if (! $_SESSION['uid'] ){
 			print 'please login';
 			exit;

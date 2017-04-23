@@ -140,7 +140,58 @@ span.psw {
     margin-left:200px;
     float:none;
 }
-
+.poll-body { 
+	font-size: 62.5%; 
+	font-family: Georgia, serif;
+}
+.poll-body h6 {
+	font-size: 1.4em;
+	margin-bottom: 15px;
+}
+.poll-body a { color: white; }
+.poll-body label, li {
+	display: block;
+	padding: 5px;
+	font-size: 1.4em;
+	color: #e3f1fa;
+}
+fieldset {
+	margin: 115px auto;
+	width: 400px;
+	padding: 8px 15px 15px 15px;
+	border: 1px solid white;
+	display: block; 
+	}
+legend {
+        margin-left: 45px;
+		padding: 4px 6px 4px 6px;
+		border: 1px solid white;
+		font-size: 2.0em;
+		color: #e3f1fa;
+		font-style: italic;
+}
+.poll-body ul { list-style: none; margin-bottom: 15px;}
+.results-bar {
+	padding: 10px;
+	color: white;
+	white-space: nowrap;
+}
+span.total-votes {
+	font-size: 2.6em;
+}
+.result {
+    background: #d81b21;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ff8080), to(#aa1317));
+    background: -moz-linear-gradient(top,  #ff8080,  #aa1317);
+    -pie-background: linear-gradient(#ff8080, #aa1317);
+    border:1px red solid;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    clear:both;
+    color:#EFEFEF;
+    padding-left:85px;
+}
 /* Add Zoom Animation */
 .animate {
     -webkit-animation: animatezoom 0.6s;

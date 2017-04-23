@@ -8,6 +8,9 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "matches":
+		require_once('views/matches.php');
+		break;
 	case "sterge_echipa":
 		if(isset($_REQUEST['filter_on']))
 		{

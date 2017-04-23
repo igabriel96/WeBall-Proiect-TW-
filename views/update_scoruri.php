@@ -2,11 +2,11 @@
 <div>
 	<form action="http://localhost:8181/TW/index.php?action=update_scoruri&find_on=1" method="POST">
     <div class="container">
-      <button type="submit">Cauta meci</button>
-      <label><b>Echipa gazda</b></label>
-      <input type="text" placeholder="Echipa gazda" name="echipa_gazda" value="<?php if(isset($_REQUEST['echipa_gazda'])){echo $_REQUEST['echipa_gazda'];}?>">
-      <label><b>Echipa oaspete</b></label>
-      <input type="text" placeholder="Echipa oaspete" name="echipa_oaspete" value="<?php if(isset($_REQUEST['echipa_oaspete'])){echo $_REQUEST['echipa_oaspete'];}?>" >
+      <button type="submit">Search game</button>
+      <label><b>Host team</b></label>
+      <input type="text" placeholder="Host team" name="echipa_gazda" value="<?php if(isset($_REQUEST['echipa_gazda'])){echo $_REQUEST['echipa_gazda'];}?>">
+      <label><b>Gest team</b></label>
+      <input type="text" placeholder="Gest team" name="echipa_oaspete" value="<?php if(isset($_REQUEST['echipa_oaspete'])){echo $_REQUEST['echipa_oaspete'];}?>" >
     </div>
   </form>
 </div>

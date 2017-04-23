@@ -17,6 +17,18 @@ switch($action){
 		oci_execute($statement_id_grupa);
 		require_once('views/clasament.php');
 		break;
+	case "players"://razvan
+		if (! $_SESSION['uid'] ){
+			print 'please login';
+			exit;
+		}
+		$statement=oci_parse($db ,"select * from jucatori");
+		$result=oci_execute($statement);
+		if(!$result)
+		{
+			echo 'eroare la interogare';
+		}
+		require_once('views/players.php');
 	case "sterge_echipa":
 		if(isset($_REQUEST['filter_on']))
 		{

@@ -228,7 +228,7 @@ image{
 <?php else:?>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Update</button>
 <a href="index.php?action=logout" style="float:right;"> <button>Logout</button></a>
-<a href="index.php?action=update_scoruri" style="float:right;"><button>Update scores/button></a>
+<a href="index.php?action=update_scoruri" style="float:right;"><button>Update scores</button></a>
 <a href="index.php?action=optiuni_organizatorii" style="float:right;"><button>Organization</button></a>
 <a href="index.php?action=optiuni_conturi" style="float:right;"><button>Account Options</button></a>
 <a href="index.php?action=users_accounts" style="float:right;"><button>Users accounts</button></a>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php require_once('header.php') ?>
 <div>
-	<form action="http://localhost:8181/TW/index.php?action=matches&filter_on=1" method="POST">
+	<form action="index.php?action=matches&filter_on=1" method="POST">
     <div class="container">
       <button type="submit">Search</button>
       <label><b>Data disputarii etapei</b></label>

@@ -128,6 +128,18 @@ span.psw {
     text-decoration: none;
     color: white;
 }
+#reviewblock{
+    display:table;
+    width: 100%;
+}
+.review{
+   float:left;
+   border-right: 1px solid white;
+}
+.reviewtext{
+    margin-left:200px;
+    float:none;
+}
 
 /* Add Zoom Animation */
 .animate {

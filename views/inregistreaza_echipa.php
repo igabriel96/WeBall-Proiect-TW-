@@ -4,7 +4,7 @@
     <div class="container">
       <label><b>Name team</b></label>
       <input type="text"  maxlength="20"  name="nume" required>
-      <label><b>Tara</b></label>
+      <label><b>Country</b></label>
       <input type="text"  maxlength="20" name="tara" required>
       <label><b>Number of players</b></label>
       <input type="text" pattern="[1-9][0-9]" maxlength="2" name="numar_jucatori" required>

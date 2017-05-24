@@ -38,7 +38,7 @@ switch($action){
 			echo 'eroare la interogare';
 		}
 		require_once('views/players.php');
-	case "sterge_echipa":
+	/*case "sterge_echipa":
 		if(isset($_REQUEST['filter_on']))
 		{
 			$sql="Select id,nume,tara,id_grupa from echipe where upper(nume)=upper('";
@@ -48,7 +48,7 @@ switch($action){
 			oci_execute($statement);
 		}
 		require_once('views/sterge_echipa.php');
-		break;
+		break; */
 	case "inregistreaza_jucator":
 		$sql='Select nume from nationalitate';
 		$tari=oci_parse($db,$sql);

@@ -38,6 +38,7 @@ switch($action){
 			echo 'eroare la interogare';
 		}
 		require_once('views/players.php');
+		break;
 	/*case "sterge_echipa":
 		if(isset($_REQUEST['filter_on']))
 		{

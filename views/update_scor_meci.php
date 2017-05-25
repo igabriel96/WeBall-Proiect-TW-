@@ -1,5 +1,5 @@
 <?php require_once('header.php') ?>
-<form class="modal-content animate" action="index.php?action=update_scor_meci&id_meci=<?php $_REQUEST['id_meci']?>&set_score=1" method="POST">
+<form class="modal-content animate" action="index.php?action=update_scor_meci&id_meci=<?php echo $_REQUEST['id_meci']?>&set_score=1" method="POST">
  
     <div class="container">
       <label><b>Points host team</b></label>

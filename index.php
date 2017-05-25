@@ -78,13 +78,17 @@ switch($action){
 		require_once('views/vizualizare_detalii.php');
 		break;
 	case "update_scor_meci":
-		require_once('views/update_scor_meci.php');
+		$sql="update meciuri set rezultat1=".$_REQUEST['goluri_echipa_gazda'];
+			$sql.=" ,rezultat2=".$_REQUEST['goluri_echipa_oaspete'];
+			$sql.=" where id=".$_REQUEST['id_meci'];
+			$statement=oci_parse($db,$sql);
 		if (isset($_REQUEST['set_score']))
 		{
+			
 			header("Location: index.php?action=update_scoruri");
 			die();
 		}
-
+		require_once('views/update_scor_meci.php');
 		break;
 	case "update_scoruri":
 			$sql="select meciuri.id as ID, data_meci as DATA ,e1.nume ECHIPA_GAZDA,e2.nume as ECHIPA_OASPETE,rezultat1 as REZ1,rezultat2 as REZ2 from meciuri join echipe e1 on meciuri.id_echipa1=e1.id join echipe e2 on meciuri.id_echipa2=e2.id where upper(e1.nume)=upper('";

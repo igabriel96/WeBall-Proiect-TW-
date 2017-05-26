@@ -74,8 +74,8 @@ if(isset($_REQUEST['filter_on']))
             <td><center><?php echo $row['REZULTAT1'].'-'.$row['REZULTAT2']?></center></td>
             <td><center><?php echo $row['ID_GRUPA']?></center></td>
             
-            <td><div class="reviewpoll"><a href="index.php?action=reviews"><center> REVIEW </center></a></div></td>
-            <td><div class="reviewpoll"><a href="index.php?action=poll"><center> POLL </center></a></div></td>
+     	    <td><div class="reviewpoll"><a href="index.php?action=reviews&id_meci=<?php echo $row['ID']?>"><center> REVIEW </center></a></div></td>
+            <td><div class="reviewpoll"><a href="index.php?action=poll&id_meci=<?php echo $row['ID']?>"><center> POLL </center></a></div></td>
 		</tr>
 	<?php } ?>
 	</table>

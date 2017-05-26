@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <?php require_once('header.php') ?>
 <div class="container">
-<button onclick="document.getElementById('id04').style.display='block'">Add review</button>
+<button onclick="document.getElementById('review_block').style.display='block'">Add review</button>
 </div>
-<?php $sql="Select username ,data_review,text from review join utilizator on review.id_utilizator=utilizator.id where is_deleted=0";
+ <div id="review_block" style="display: none">
+ 	<form action="index.php?action=insert_review&" method="post">
+ 	<STRONG>Introdu review-ul</STRONG>
+ 	<input type="text"  name="text" >
+ 	<button type="submit"  >Submit</button>
+ 	</form>
+ </div>
+<?php $sql="Select username ,data_review,text from review join utilizator on review.id_utilizator=utilizator.id where is_deleted=0 and id_meci=".$_REQUEST['id_meci'];
     $statement=oci_parse($db,$sql);
     oci_execute($statement);
         while(oci_fetch($statement)){ ?>

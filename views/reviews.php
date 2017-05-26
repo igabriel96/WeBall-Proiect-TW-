@@ -3,31 +3,17 @@
 <div class="container">
 <button onclick="document.getElementById('id04').style.display='block'">Add review</button>
 </div>
-<div id="reviewblock">
-  <div class="review">
-     <p> Review added by <br><b> Razvan </b><br><small>now 240 days ago</small></p>
-  </div>
-  <div class="reviewtext">
-    <p> Was a really great match </p>
-  </div>
-</div>
-<hr>
-<div id="reviewblock">
-  <div class="review">
-    <p> Review added by <br><b> Alin </b><br><small>now 120 days ago </small></p>
-  </div>
-  <div class="reviewtext">    
-      <p> Could be better , but wasn't a bad match 
-      </p>
-  </div>
-</div>
-<hr>
-<div id="reviewblock">
-  <div class="review">
-    <p> Review added by <br><b> Gabriel </b><br><small>now 3 days ago </small></p>
-  </div>
-  <div class="reviewtext">    
-      <p> One of the best matches i ever seen in my life 
-      </p>
-  </div>
-</div>
+<?php $sql="Select username ,data_review,text from review join utilizator on review.id_utilizator=utilizator.id where is_deleted=0";
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+        while(oci_fetch($statement)){ ?>
+            <div id="reviewblock">
+              <div class="review">
+                 <p> Review added by <br><b><?php echo oci_result($statement, 'USERNAME');?>  </b><br><small>now 2 minutes ago</small></p>
+              </div>
+              <div class="reviewtext">
+                <p> <?php echo oci_result($statement,'TEXT')?></p>
+              </div>
+            </div>
+            <hr>
+      <?php } ?>

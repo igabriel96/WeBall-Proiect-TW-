@@ -124,6 +124,42 @@ span.psw {
     color: red;
     cursor: pointer;
 }
+
+.tablematches th{
+    background-color: #1a1aff;
+    border : 1px solid white;
+    text-align: center;
+    font-weight: bold;
+}
+.tablematches td{
+    text-align: center;
+}
+.tablematches img{
+    width: 50px;
+    height: 50px;
+}
+#scorescontainer {
+    width:100%;
+    text-align:center;
+}
+
+#leftimg {
+    float:left;
+    height:30px;
+    margin-bottom: 10%;
+}
+
+#centerscore {
+    display: inline-block;
+    height:30px;
+    margin-top: 8%;
+}
+
+#rightimg {
+    float:right;
+    height:30px;
+    margin-bottom: 10%;
+}
 .reviewpoll a{
     text-decoration: none;
     color: white;

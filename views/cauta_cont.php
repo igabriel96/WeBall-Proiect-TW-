@@ -7,7 +7,7 @@
 	
     <div class="container">
       <label><b>Account Name</b></label>
-      <input type="text"  maxlength="20" placeholder="Name"  name="nume cont" required>
+      <input type="text"  maxlength="20" placeholder="Name"  name="nume_cont" required>
       <button type="Submit">Search</button>
     </div>
 	

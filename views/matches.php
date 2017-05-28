@@ -4,18 +4,26 @@
 	<form action="index.php?action=matches&filter_on=1" method="POST">
     <div class="container">
       <button type="submit">Search</button>
-      <label><b>Data disputarii etapei</b></label>
-      <input type="text" placeholder="Introdu data" name="data_meci" value="<?php if(isset($_REQUEST['data_meci'])){echo $_REQUEST['data_meci'];}?>">
-  </form>
+      <label><b>Data disputarii meciului</b></label>
+      <input type="date" placeholder="Introdu data" name="data_meci" value="<?php if(isset($_REQUEST['data_meci'])){echo $_REQUEST['data_meci'];}?>">
+   </div>
+ </form>
 </div>
 <?php
 if(isset($_REQUEST['filter_on']))
 {
 	$range = 1;
 	$v_data_meci=$_REQUEST['data_meci'];
-	$sql = "SELECT COUNT(*) FROM meciuri where data_meci like '";
-	$sql.="%$v_data_meci%";
-	$sql.="'";
+	 if($_REQUEST['data_meci'] != NULL)
+    	{
+	   $sql = "SELECT COUNT(*) FROM meciuri where data_meci = to_date('";
+	   $sql.="$v_data_meci";
+	   $sql.="','yyyy-mm-dd')";
+    	}
+    	else
+   	{
+        $sql = "SELECT COUNT(*) FROM meciuri";
+   	}
 	$result = oci_parse($db, $sql);
 	oci_execute($result);
 	$r = oci_fetch_row($result);
@@ -48,35 +56,65 @@ if(isset($_REQUEST['filter_on']))
 	$offset = ($currentpage - 1) * $rowsperpage;
 
 	// get the info from the db 
-	$cerinte="'%$v_data_meci%";
+	$cerinte="'$v_data_meci";
 	$cerinte.="'";
-	$sql = "SELECT * from (Select rownum as rw, DATA_MECI, (SELECT NUME FROM ECHIPE WHERE ID=id_echipa1) as Echipa1, (SELECT NUME FROM ECHIPE WHERE ID=id_echipa2) as Echipa2 , REZULTAT1 , REZULTAT2 , ID_GRUPA, ID from
-    MECIURI WHERE DATA_MECI like $cerinte) where rw>=$offset and rw<=($rowsperpage+$offset)";
+	if($_REQUEST['data_meci'] != NULL)
+    	{
+		$sql = "SELECT * from (Select rownum as rw, DATA_MECI, (SELECT NUME FROM ECHIPE WHERE ID=id_echipa1) as Echipa1, (SELECT logo FROM ECHIPE WHERE ID=id_echipa1) as Logo1 , (SELECT logo FROM ECHIPE WHERE ID=id_echipa2) as Logo2, (SELECT NUME FROM ECHIPE WHERE ID=id_echipa2) as Echipa2 , REZULTAT1 , REZULTAT2 , ID_GRUPA, ID from
+       		MECIURI WHERE data_meci = to_date($cerinte,'yyyy-mm-dd')) where rw>=$offset and rw<=($rowsperpage+$offset)";
+    	}
+    	else
+    	{
+        	$sql = "SELECT * from (Select rownum as rw, DATA_MECI, (SELECT NUME FROM ECHIPE WHERE ID=id_echipa1) as Echipa1, (SELECT logo FROM ECHIPE WHERE ID=id_echipa1) as Logo1 , (SELECT logo FROM ECHIPE WHERE ID=id_echipa2) as Logo2, (SELECT NUME FROM ECHIPE WHERE ID=id_echipa2) as Echipa2 , REZULTAT1 , REZULTAT2 , ID_GRUPA, ID from
+        	MECIURI ) where rw>=$offset and rw<=($rowsperpage+$offset)";
+   	 }
 	$result = oci_parse($db,$sql);
 	oci_execute($result);
-	?>
-	<table>
+	if($r[0] != 0 ) { ?>
+	<table class="tablematches">
 	<tr>
-        <td><strong><center>Data meci</center></strong></td>
-        <td><strong><center>Echipa gazda</center></strong></td> 
-        <td><strong><center>Echipa oaspete</center></strong></td>
-        <td><strong><center>Scorul</center></strong></td>
-        <td><strong><center>Grupa</center></strong></td>
-        <td><strong><center>Review</center></strong></td>
-        <td><strong><center>Poll</center></strong></td>
+        <th>Data meci</th>
+        <th>Echipa gazda</th> 
+        <th>Scorul</th>
+        <th>Echipa oaspete</th>
+        <th>Grupa</th>
+        <th>Review</th>
+        <th>Poll</th>
 	 </tr>
-	<?php 
+	<?php } 
+    	else
+    	{
+        echo "<center><b>Nu s-au disputat meciuri in aceasta data</b></center><br>";
+        exit;
+    	}
 	while($row = oci_fetch_array($result)){ ?>
 		<tr>
-            <td><center><?php echo $row['DATA_MECI']?></center></td>
-            <td><center><?php echo $row[2]?></center></td>
-            <td><center><?php echo $row[3]?></center></td>
-            <td><center><?php echo $row['REZULTAT1'].'-'.$row['REZULTAT2']?></center></td>
-            <td><center><?php echo $row['ID_GRUPA']?></center></td>
+            <div class="displaymatches">
+                <td><?php echo substr($row['DATA_MECI'],0,2).
+                str_repeat('&nbsp;',1).substr($row['DATA_MECI'],3,1).
+                strtolower(substr($row['DATA_MECI'],4,2)).
+                str_repeat('&nbsp;', 1).'20'.
+                substr($row['DATA_MECI'],7,2) ?></td>
+                <td><?php echo $row[2]?></td>
+                <td>
+                <div id="scorescontainer">
+                  <div id="leftimg">    
+                    <img src="images/<?php echo $row[3] ?>" >
+                  </div>
+                  <div id="centerscore">
+                    <?php echo $row['REZULTAT1'].'-'.$row['REZULTAT2']?>
+                  </div>       
+                  <div id="rightimg">
+                      <img src="images/<?php echo $row[4] ?>" >
+                 </div>
+               </div>
+              </td>
+            <td><?php echo $row[5]?></td>
+            <td><?php echo $row['ID_GRUPA']?></td>
             
      	    <td><div class="reviewpoll"><a href="index.php?action=reviews&id_meci=<?php echo $row['ID']?>"><center> REVIEW </center></a></div></td>
             <td><div class="reviewpoll"><a href="index.php?action=poll&id_meci=<?php echo $row['ID']?>"><center> POLL </center></a></div></td>
-		</tr>
+			</div></tr>
 	<?php } ?>
 	</table>
 	<?php

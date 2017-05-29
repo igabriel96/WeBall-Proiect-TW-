@@ -5,7 +5,6 @@ DROP TABLE meciuri
 /
 DROP TABLE pozitii
 /
-
 DROP TABLE pozitie
 /
 DROP TABLE grupa
@@ -37,6 +36,8 @@ CREATE TABLE jucatori(
 ALTER TABLE jucatori ADD (
   CONSTRAINT jucatori_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE jucatori_seq;
+/
 CREATE SEQUENCE jucatori_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER jucatori_bir 
@@ -52,6 +53,7 @@ END;
 Create Table echipe(
 id NUMBER(10),
 nume Varchar2(50) Not NULL,
+logo Varchar2(50) Not NULL,
 tara Varchar2(50) Not NULL,
 numar_jucatori NUMBER(5),
 id_grupa Varchar2(50)
@@ -59,6 +61,8 @@ id_grupa Varchar2(50)
 /
 ALTER TABLE echipe ADD (
   CONSTRAINT echipe_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE echipe_seq;
 /
 CREATE SEQUENCE echipe_seq START WITH 1;
 /
@@ -85,6 +89,8 @@ data_meci date
 ALTER TABLE meciuri ADD (
   CONSTRAINT meciuri_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE meciuri_seq;
+/
 CREATE SEQUENCE meciuri_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER meciuri_bir 
@@ -107,6 +113,8 @@ id_pozitie Number(3)
 ALTER TABLE pozitii ADD (
   CONSTRAINT pozitii_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE pozitii_seq;
+/
 CREATE SEQUENCE pozitii_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER pozitii_bir 
@@ -128,6 +136,8 @@ Create Table pozitie
 ALTER TABLE pozitie ADD (
   CONSTRAINT pozitie_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE pozitie_seq;
+/
 CREATE SEQUENCE pozitie_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER pozitie_bir 
@@ -148,6 +158,8 @@ Create Table grupa
 /
 ALTER TABLE grupa ADD (
   CONSTRAINT grupa_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE grupa_seq;
 /
 CREATE SEQUENCE grupa_seq START WITH 1;
 /
@@ -177,6 +189,8 @@ golaveraj number(5) default 0
 ALTER TABLE clasament ADD (
   CONSTRAINT clasament_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE clasament_seq;
+/
 CREATE SEQUENCE clasament_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER clasament_bir 
@@ -197,6 +211,8 @@ create Table nationalitate
 /
 ALTER TABLE nationalitate ADD (
   CONSTRAINT nationalitate_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE nationalitate_seq;
 /
 CREATE SEQUENCE nationalitate_seq START WITH 1;
 /
@@ -222,6 +238,8 @@ rol Varchar2(50)
 ALTER TABLE utilizator ADD (
   CONSTRAINT utilizator_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE utilizator_seq;
+/
 CREATE SEQUENCE utilizator_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER utilizator_bir 
@@ -246,6 +264,8 @@ is_deleted number(10)
 ALTER TABLE review ADD (
   CONSTRAINT review_pk PRIMARY KEY (ID));
 /
+DROP SEQUENCE review_seq;
+/
 CREATE SEQUENCE review_seq START WITH 1;
 /
 CREATE OR REPLACE TRIGGER review_bir 
@@ -267,6 +287,8 @@ create table pronostic
 /
 ALTER TABLE pronostic ADD (
   CONSTRAINT pronostic_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE pronostic_seq;
 /
 CREATE SEQUENCE pronostic_seq START WITH 1;
 /
@@ -295,6 +317,7 @@ insert into pozitie(nume) values('Mijlocas stanga');
 insert into pozitie(nume) values('Mijlocas dreapta');
 insert into pozitie(nume) values('Mijlocas defensiv');
 insert into pozitie(nume) values('Mijlocas ofensiv');
+
 Insert into nationalitate (nume) values('Romana');
 Insert into nationalitate (nume) values('Italiana');
 Insert into nationalitate (nume) values('Franceza');
@@ -307,17 +330,24 @@ Insert into nationalitate (nume) values('Chineza');
 Insert into nationalitate (nume) values('Japoneza');
 Insert into nationalitate (nume) values('Rwandeza');
 
-insert into echipe (nume,tara) values('Steaua','Romania');
-insert into echipe (nume,tara) values('Barcelona','Spania');
-insert into echipe (nume,tara) values('Real MAdrid','Spania');
-insert into echipe (nume,tara) values('Juventus','Italia');
-insert into echipe (nume,tara) values('AS Roma','Italia');
-insert into echipe (nume,tara) values('PSG','Franta');
-insert into echipe (nume,tara) values('FC BOTOSANI','Romania');
-insert into echipe (nume,tara) values('CS VORNICENI','Romania');
-update  echipe set id_grupa=2 where id=any(5,6,7,8);
+insert into echipe (nume,logo,tara) values('Steaua','steaua.png','Romania');
+insert into echipe (nume,logo,tara) values('Dinamo','dinamo.png','Romania');
+insert into echipe (nume,logo,tara) values('Rapid','rapid.png','Romania');
+insert into echipe (nume,logo,tara) values('Astra','astra.png','Romania');
+insert into echipe (nume,logo,tara) values('Botosani','botosani.png','Romania');
+insert into echipe (nume,logo,tara) values('Brasov','brasov.png','Romania');
+insert into echipe (nume,logo,tara) values('CFR Cluj','cfr.png','Romania');
+insert into echipe (nume,logo,tara) values('Concordia','concordia.png','Romania');
+insert into echipe (nume,logo,tara) values('Iasi','iasi.png','Romania');
+insert into echipe (nume,logo,tara) values('Petrolul','petrolul.png','Romania');
+insert into echipe (nume,logo,tara) values('Viitorul','viitorul.png','Romania');
+insert into echipe (nume,logo,tara) values('Gaz Metan','gazmetan.png','Romania');
 update  echipe set id_grupa=1 where id=any(1,2,3,4);
+update  echipe set id_grupa=2 where id=any(5,6,7,8);
+update  echipe set id_grupa=3 where id=any(9,10,11,12);
+
 /
+
 Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Frunza','Teodor ');
 Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Onu','Stefan ');
 Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Teclici','Radu ');
@@ -350,9 +380,39 @@ Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Leonte','Maria ');
 Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Procop','Vladimir ');
 Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Prodan','Marius ');
 Insert into NUME_STUDENTI5 (NUME,PRENUME) values (' Trifan','Tamara ');
+
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,2,1,to_date('20/4/2017','dd/mm/yyyy'));
-insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,3,1,to_date('21/4/2017','dd/mm/yyyy'));
-insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(2,3,1,to_date('22/4/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(3,1,1,to_date('21/4/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,4,1,to_date('22/4/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(2,3,1,to_date('27/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(4,2,1,to_date('27/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(4,3,1,to_date('28/5/2017','dd/mm/yyyy'));
+
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(5,6,2,to_date('28/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(5,7,2,to_date('28/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(8,6,2,to_date('29/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(6,7,2,to_date('29/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(8,5,2,to_date('29/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(7,8,2,to_date('29/5/2017','dd/mm/yyyy'));
+
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(9,10,3,to_date('28/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(9,11,3,to_date('28/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(11,10,3,to_date('29/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(12,9,3,to_date('29/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(12,10,3,to_date('29/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(11,9,3,to_date('29/5/2017','dd/mm/yyyy'));
+/
+declare
+contor integer;
+i integer := 1;
+begin
+select count(*) into contor from meciuri;
+while (i <= contor) LOOP
+update meciuri set rezultat1 = dbms_random.value(1,8) where id = i;
+update meciuri set rezultat2 = dbms_random.value(1,8) where id = i;
+i := i + 1;
+END LOOP;
+end;
 /
 DECLARE 
   v_nr1 integer;
@@ -390,3 +450,4 @@ BEGIN
    END LOOP;
 END;
 /
+COMMIT;

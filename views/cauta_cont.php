@@ -18,6 +18,8 @@
 
 
 
+
+
 <?php
 if(isset($_REQUEST['filter_on'])) {
 
@@ -30,11 +32,33 @@ if(isset($_REQUEST['filter_on'])) {
 	$result = oci_parse($db, $sql);
 	oci_execute($result);
 	$r = oci_fetch_row($result);
+	if($r) {
 	print_r('ID ul este ');
 	print_r($r[0]);
 	?> <br> <?php
+	print_r('Username ul este ');
+	print_r($r[1]);
+	?> <br> <?php
+	print_r('Parola este ');
+	print_r($r[2]);
+	?> <br> <?php
+	print_r('Emailul este ');
+	print_r($r[3]);
+	?> <br> <?php
+	print_r('Rolul este de ');
+	print_r($r[4]);	
 	
-}
+	?> <br> <?php
+	} else
+print_r('Contul nu a fost gasit');}
+
+    
+
+
+
+
+
+
     
 
 

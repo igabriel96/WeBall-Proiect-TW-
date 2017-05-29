@@ -77,6 +77,9 @@ switch($action){
 	case "vizualizare_detalii":
 		require_once('views/vizualizare_detalii.php');
 		break;
+	case "admin_elimina_cont":
+		require_once('views/admin_elimina_cont.php');
+		break;
 	case "update_scor_meci":
 		$sql="update meciuri set rezultat1=".$_REQUEST['goluri_echipa_gazda'];
 			$sql.=" ,rezultat2=".$_REQUEST['goluri_echipa_oaspete'];
@@ -138,6 +141,9 @@ switch($action){
 		header('Location: index.php');
 		exit;
 	break;
+	case "users_accounts":
+		require_once('views/users_accounts.php');
+		break;
 
 	default:
 		require_once('views/home.php');

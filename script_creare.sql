@@ -430,7 +430,9 @@ insert into clasament(id_echipa) values(9);
 insert into clasament(id_echipa) values(10);
 insert into clasament(id_echipa) values(11);
 insert into clasament(id_echipa) values(12);
-update clasament set grupa = (select grupa from echipe where id = clasament.id_echipa);
+update clasament set grupa = 1 where id_echipa = any(1,2,3,4);
+update clasament set grupa = 2 where id_echipa = any(5,6,7,8);
+update clasament set grupa = 3 where id_echipa = any(9,10,11,12);
 declare
 TYPE VECTOR IS TABLE OF VARCHAR2(1000) INDEX BY PLS_INTEGER;
 comments VECTOR;

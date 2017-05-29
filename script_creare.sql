@@ -401,7 +401,18 @@ insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(11,10,3,to_
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(12,9,3,to_date('29/5/2017','dd/mm/yyyy'));
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(12,10,3,to_date('29/5/2017','dd/mm/yyyy'));
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(11,9,3,to_date('29/5/2017','dd/mm/yyyy'));
-/
+
+insert into utilizator(username , parola , email , rol) values('alinapetrei','123123123','alinapetrei@gmail.com','admin');
+insert into utilizator(username , parola , email , rol) values('gabrielionesei','123456789','gabrielionesei@gmail.com','admin');
+insert into utilizator(username , parola , email , rol) values('paulavasiliu','987654321','paulavasiliu@gmail.com','admin');
+insert into utilizator(username , parola , email , rol) values('razvantheodoru','159753951','gabrielionesei@gmail.com','admin');
+insert into utilizator(username , parola , email , rol) values('ioanabodnar','1212121212','ioanabodnar@gmail.com','user');
+insert into utilizator(username , parola , email , rol) values('raresarvinte','1515151515','raresarvinte@gmail.com','user');
+insert into utilizator(username , parola , email , rol) values('ciprianpurice','newpass','ciprianpurice@gmail.com','user');
+insert into utilizator(username , parola , email , rol) values('theodoravarvaroi','passnew','theodoravarvaroi@gmail.com','user');
+insert into utilizator(username , parola , email , rol) values('paulacarp','newpass123','paulacarp@gmail.com','user');
+insert into utilizator(username , parola , email , rol) values('cosminpintilie','passnew123','cosminpintilie@gmail.com','user');
+
 declare
 TYPE VECTOR IS TABLE OF VARCHAR2(1000) INDEX BY PLS_INTEGER;
 comments VECTOR;
@@ -428,7 +439,7 @@ comments(19) := 'Football: A sport that bears the same relation to education tha
 comments(20) := 'Everyone has the fire, but the champions know when to ignite the spark.';
 for i in 1..1000 LOOP
    
-   insert into review(id_utilizator,id_meci,text,is_deleted) values(dbms_random.value(1,10000),dbms_random.value(1,12),comments(dbms_random.value(1,20)),0);
+   insert into review(id_utilizator,id_meci,text,is_deleted) values(dbms_random.value(1,12),dbms_random.value(1,12),comments(dbms_random.value(1,20)),0);
 
 END LOOP;
 end;
@@ -453,7 +464,7 @@ DECLARE
   v_contor integer :=0;
   v_varsta integer :=0;
 BEGIN
-   WHILE (v_contor < 10001) LOOP       
+   WHILE (v_contor < 100) LOOP       
        v_contor := v_contor + 1;
        v_nr1:=DBMS_Random.value(1,15);
        v_nr2:=DBMS_Random.value(1,15);
@@ -461,23 +472,6 @@ BEGIN
        select trim(nume) into v_nume from (select rownum as "rw" , nume from NUME_STUDENTI5 ) where "rw"=v_nr1;
         select trim(prenume) into v_prenume from (select rownum as "rw" , prenume from NUME_STUDENTI5 ) where "rw"=v_nr2;
         insert into jucatori(nume,prenume,id_nationalitate,varsta,id_echipa) values(v_nume,v_prenume,4,v_varsta,11);
-   END LOOP;
-END;
-/
-DECLARE 
-  v_nr1 integer;
-  v_nr2 integer;
-  v_username varchar2(50);
-  v_parola varchar2(50);
-  v_contor integer :=0;
-BEGIN
-   WHILE (v_contor < 10001) LOOP       
-       v_contor := v_contor + 1;
-       v_nr1:=DBMS_Random.value(1,15);
-       v_nr2:=DBMS_Random.value(1,15);
-       select trim("nume")||trim(v_contor) into v_username from (select rownum as "rw" , nume||prenume as "nume" from NUME_STUDENTI5 ) where "rw"=v_nr1;
-        select trim("parola") into v_parola from (select rownum as "rw" , reverse(prenume) as "parola" from NUME_STUDENTI5 ) where "rw"=v_nr2;
-        insert into utilizator(username,parola,email,rol) values(v_username,v_parola,v_username||'@gmail.com','user');
    END LOOP;
 END;
 /

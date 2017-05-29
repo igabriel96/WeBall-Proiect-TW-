@@ -13,22 +13,22 @@
       <input type="password" placeholder="Enter Password" name="password" required>
       <button type="Submit">View account</button>
     </div>
-	
 <?php
 if(isset($_REQUEST['filter_on'])) {
 
 	//print_r ($_REQUEST['nume_cont']);
 	$v_nume_cont=$_REQUEST['nume_cont'];
 	$password=$_REQUEST['password'];
-	$sql = " select * FROM UTILIZATOR where username like '";
-	$sql.="%$v_nume_cont%";
+	$sql = " select * FROM UTILIZATOR where username = '";
+	$sql.="$v_nume_cont";
 	$sql.="'";
-	$sql.=" and parola like '";
-	$sql.="%$password%";
+	$sql.=" and parola ='";
+	$sql.="$password";
 	$sql.="'";
 	$result = oci_parse($db, $sql);
 	oci_execute($result);
 	$r = oci_fetch_row($result);
+	if(!$r) {print_r('Contul nu a fost gasit'); exit;}
 	//print_r($r);
 	print_r('ID ul este ');
 	print_r($r[0]);
@@ -46,6 +46,3 @@ if(isset($_REQUEST['filter_on'])) {
 	print_r($r[4]);	
 }
     
-
-    
-

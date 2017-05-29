@@ -135,6 +135,9 @@ switch($action){
 		}
 
 	break;
+	case "update_account":
+		require_once('views/update_account.php');
+		break;
 	case "logout":
 		require_once('class/class.user.php');
 		logout();

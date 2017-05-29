@@ -2,7 +2,7 @@
 <?php require_once('header.php') ?>
 
 
-<form class="modal-content animate" action="index.php?action=cauta_cont" method="POST">
+<form class="modal-content animate" action="http://localhost:8989/TW/index.php?action=cauta_cont&filter_on=1" method="POST">
  
 	
     <div class="container">

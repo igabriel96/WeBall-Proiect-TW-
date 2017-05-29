@@ -1,7 +1,7 @@
 
 <?php require_once('header.php') ?>
 
-<form class="modal-content animate" action="index.php?action=elimina_conturi" method="POST">
+<form class="modal-content animate" action="index.php?action=elimina_conturi&filter_on=1" method="POST">
  
 	
     <div class="container">

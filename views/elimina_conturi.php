@@ -24,15 +24,19 @@ if(isset($_REQUEST['filter_on'])) {
 	//print_r ($_REQUEST['nume_cont']);
 	$v_nume_cont=$_REQUEST['nume_cont'];
 	$password=$_REQUEST['password'];
-	$sql = " DELETE FROM UTILIZATOR where username like '";
-	$sql.="%$v_nume_cont%";
+	
+	$sql = " DELETE FROM UTILIZATOR where username = '";
+	$sql.="$v_nume_cont";
 	$sql.="'";
-	$sql.=" and parola like '";
-	$sql.="%$password%";
+	$sql.="and parola= '";
+	$sql.="$password";
 	$sql.="'";
 	$result = oci_parse($db, $sql);
 	oci_execute($result);
 	print_r('Contul a fost sters');
+	require_once('class/class.user.php');
+	logout(); 
+	
 	
 }
 

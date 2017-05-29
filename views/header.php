@@ -8,7 +8,7 @@
 <div  class="btn-group" >
 <a href="index.php?action=players" style="float:left;"> <button>Players</button></a>
 <a href="index.php?action=matches" style="float:left;"><button>Matches</button></a>
-<a href="index.php?action=clasament" style="float:left;"> <button>Ranking</button></a>
+<a href="index.php?action=ranking" style="float:left;"> <button>Ranking</button></a>
 
 
 

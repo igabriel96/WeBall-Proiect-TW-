@@ -20,11 +20,8 @@ switch($action){
     	case "pollresults":
      	        require_once('views/pollresults.php');
     		break;
-	case "clasament":
-		$sql='Select distinct id_grupa from echipe order by id_grupa asc';
-		$statement_id_grupa=oci_parse($db,$sql);
-		oci_execute($statement_id_grupa);
-		require_once('views/clasament.php');
+	case "ranking":
+		require_once('views/ranking.php');
 		break;
 	case "players":
 		if (! $_SESSION['uid'] ){

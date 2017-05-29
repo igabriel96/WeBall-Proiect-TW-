@@ -3,7 +3,7 @@
 
 
 
-<form class="modal-content animate" action="index.php?action=vizualizare_detalii" method="POST">
+<form class="modal-content animate" action="index.php?action=vizualizare_detalii&filter_on=1" method="POST">
  
 	
     <div class="container">

@@ -12,6 +12,17 @@
 	
 }
 
+.button_cursor
+{
+
+   background-color: #800080;
+    color: white;
+    padding: 8px 0px;
+    margin: 0px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+}
 /* Clear floats (clearfix hack) */
 .btn-group:after {
     content: "";

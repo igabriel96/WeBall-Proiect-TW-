@@ -413,6 +413,19 @@ insert into utilizator(username , parola , email , rol) values('theodoravarvaroi
 insert into utilizator(username , parola , email , rol) values('paulacarp','newpass123','paulacarp@gmail.com','user');
 insert into utilizator(username , parola , email , rol) values('cosminpintilie','passnew123','cosminpintilie@gmail.com','user');
 
+insert into clasament(id_echipa) values(1);
+insert into clasament(id_echipa) values(2);
+insert into clasament(id_echipa) values(3);
+insert into clasament(id_echipa) values(4);
+insert into clasament(id_echipa) values(5);
+insert into clasament(id_echipa) values(6);
+insert into clasament(id_echipa) values(7);
+insert into clasament(id_echipa) values(8);
+insert into clasament(id_echipa) values(9);
+insert into clasament(id_echipa) values(10);
+insert into clasament(id_echipa) values(11);
+insert into clasament(id_echipa) values(12);
+
 declare
 TYPE VECTOR IS TABLE OF VARCHAR2(1000) INDEX BY PLS_INTEGER;
 comments VECTOR;

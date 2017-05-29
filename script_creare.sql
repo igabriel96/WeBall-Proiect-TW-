@@ -403,6 +403,37 @@ insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(12,10,3,to_
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(11,9,3,to_date('29/5/2017','dd/mm/yyyy'));
 /
 declare
+TYPE VECTOR IS TABLE OF VARCHAR2(1000) INDEX BY PLS_INTEGER;
+comments VECTOR;
+begin
+comments(1) := 'Ability is what you are capable of doing. Motivation determines what you do. Attitude determines how well you do it.';
+comments(2) := 'Pressure is something you feel when you do not know what the hell you are doing.';
+comments(3) := 'The problem with winter sports is that -- follow me closely here -- they generally take place in winter.';
+comments(4) := 'If a man watches three football games in a row, he should be declared legally dead.';
+comments(5) := 'football is like life - it requires perserverance, self-denial, hard work, sacrifice, dedication and respect for authority.';
+comments(6) := 'The thing about football - the important thing about football - is that it is not just about football.';
+comments(7) := 'Anyone who is just driven 90 yards against huge men trying to kill them has earned the right to do Jazz hands.';
+comments(8) := 'The same boys who got detention in elementary school for beating the crap out of people are now rewarded for it. They call it football.';
+comments(9) := 'I like football. I find its an exciting strategic game. Its a great way to avoid conversation with your family at Thanksgiving.';
+comments(10) := 'In football everything is complicated by the presence of the opposite team.';
+comments(11) := 'Football is the ballet of the masses.';
+comments(12) := 'The Enemy of the best is the good. If you are always settling with what is good, you wll never be the best.';
+comments(13) := 'Really well played by both of the teams';
+comments(14) := 'So exciting match , got me more than everything else';
+comments(15) := 'Football combines two of the worst things in American life. It is violence punctuated by committee meetings.';
+comments(16) := 'Not bad , but i really want to see who will win the championship';
+comments(17) := 'You got one guy going boom, one guy going whack, and one guy not getting in the endzone.';
+comments(18) := 'Nothing are better than a good football match';
+comments(19) := 'Football: A sport that bears the same relation to education that bullfighting does to agriculture.';
+comments(20) := 'Everyone has the fire, but the champions know when to ignite the spark.';
+for i in 1..1000 LOOP
+   
+   insert into review(id_utilizator,id_meci,text,is_deleted) values(dbms_random.value(1,10000),dbms_random.value(1,12),comments(dbms_random.value(1,20)),0);
+
+END LOOP;
+end;
+/
+declare
 contor integer;
 i integer := 1;
 begin

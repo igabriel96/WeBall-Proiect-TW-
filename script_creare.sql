@@ -178,6 +178,7 @@ create table clasament
 (
 id Number(10) ,
 id_echipa NUMBER(10),
+grupa NUMBER(10),
 punctaj number(3) default 0,
 goluri_date number(10) default 0,
 goluri_primite number(10) default 0,
@@ -331,18 +332,18 @@ Insert into nationalitate (nume) values('Chineza');
 Insert into nationalitate (nume) values('Japoneza');
 Insert into nationalitate (nume) values('Rwandeza');
 
-insert into echipe (nume,logo,tara) values('Steaua','steaua.png','Romania');
-insert into echipe (nume,logo,tara) values('Dinamo','dinamo.png','Romania');
-insert into echipe (nume,logo,tara) values('Rapid','rapid.png','Romania');
-insert into echipe (nume,logo,tara) values('Astra','astra.png','Romania');
-insert into echipe (nume,logo,tara) values('Botosani','botosani.png','Romania');
-insert into echipe (nume,logo,tara) values('Brasov','brasov.png','Romania');
-insert into echipe (nume,logo,tara) values('CFR Cluj','cfr.png','Romania');
-insert into echipe (nume,logo,tara) values('Concordia','concordia.png','Romania');
-insert into echipe (nume,logo,tara) values('Iasi','iasi.png','Romania');
-insert into echipe (nume,logo,tara) values('Petrolul','petrolul.png','Romania');
-insert into echipe (nume,logo,tara) values('Viitorul','viitorul.png','Romania');
-insert into echipe (nume,logo,tara) values('Gaz Metan','gazmetan.png','Romania');
+insert into echipe (nume,logo,tara) values('Steaua','http://i.imgur.com/FgxhO2c.png','Romania');
+insert into echipe (nume,logo,tara) values('Dinamo','http://i.imgur.com/2wSeC0I.png','Romania');
+insert into echipe (nume,logo,tara) values('Rapid','http://i.imgur.com/6OlKdFA.png','Romania');
+insert into echipe (nume,logo,tara) values('Astra','http://i.imgur.com/0pN93j8.png','Romania');
+insert into echipe (nume,logo,tara) values('Botosani','http://i.imgur.com/uLeiXm3.png','Romania');
+insert into echipe (nume,logo,tara) values('Brasov','http://i.imgur.com/qaDvzbc.png','Romania');
+insert into echipe (nume,logo,tara) values('CFR Cluj','http://i.imgur.com/lU66fSO.png','Romania');
+insert into echipe (nume,logo,tara) values('Concordia','http://i.imgur.com/8zb3Sxe.png','Romania');
+insert into echipe (nume,logo,tara) values('Iasi','http://i.imgur.com/PF8oqHF.png','Romania');
+insert into echipe (nume,logo,tara) values('Petrolul','http://i.imgur.com/PNxGznl.png','Romania');
+insert into echipe (nume,logo,tara) values('Viitorul','http://i.imgur.com/5BjEyWX.png','Romania');
+insert into echipe (nume,logo,tara) values('Gaz Metan','http://i.imgur.com/rpNmbjm.png','Romania');
 update  echipe set id_grupa=1 where id=any(1,2,3,4);
 update  echipe set id_grupa=2 where id=any(5,6,7,8);
 update  echipe set id_grupa=3 where id=any(9,10,11,12);
@@ -429,7 +430,7 @@ insert into clasament(id_echipa) values(9);
 insert into clasament(id_echipa) values(10);
 insert into clasament(id_echipa) values(11);
 insert into clasament(id_echipa) values(12);
-
+update clasament set grupa = (select grupa from echipe where id = clasament.id_echipa);
 declare
 TYPE VECTOR IS TABLE OF VARCHAR2(1000) INDEX BY PLS_INTEGER;
 comments VECTOR;

@@ -16,7 +16,7 @@
 	}
 	elseif ($_REQUEST['tip']=='pdf') 
 	{
-		require_once('views\fpdf\fpdf.php');
+		require_once('fpdf\fpdf.php');
 		header('Content-Type: application/pdf');
 		header('Content-Disposition: attachement; filename="meciuri.pdf"');
 		class PDF extends FPDF

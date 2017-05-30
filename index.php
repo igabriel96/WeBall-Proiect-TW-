@@ -28,7 +28,10 @@ switch($action){
         	break;
 	case "players":
 		if (! $_SESSION['uid'] ){
-			print 'please login';
+			require_once('views/header.php');
+                echo '<p style="color: white;
+                text-align: center;margin-top : 5%">Trebuie sa te loghezi ca sa poti benificia de aceasta functionalitate</p>';
+            	require_once('views/footer.php');
 			exit;
 		}
 		require_once('views/players.php');

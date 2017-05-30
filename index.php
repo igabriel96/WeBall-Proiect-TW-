@@ -23,16 +23,13 @@ switch($action){
 	case "ranking":
 		require_once('views/ranking.php');
 		break;
+	case "fixtures":
+        	require_once('views/fixtures.php');
+        	break;
 	case "players":
 		if (! $_SESSION['uid'] ){
 			print 'please login';
 			exit;
-		}
-		$statement=oci_parse($db ,"select * from jucatori");
-		$result=oci_execute($statement);
-		if(!$result)
-		{
-			echo 'eroare la interogare';
 		}
 		require_once('views/players.php');
 		break;

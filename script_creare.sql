@@ -19,7 +19,7 @@ DROP TABLE review
 /
 DROP TABLE pronostic
 /
-DROP TABLE NUME_STUDENTI5
+DROP TABLE fixtures
 /
 DROP TABLE jucatori
 /
@@ -304,10 +304,32 @@ BEGIN
   FROM   dual;
 END;
 /
-  CREATE TABLE NUME_STUDENTI5
-   (  NUME VARCHAR2(50), 
-      PRENUME VARCHAR2(50)
-   ) 
+Create Table fixtures(
+id NUMBER(10),
+id_echipa1 Number(10) ,
+id_echipa2 Number(10) ,
+rezultat1 Number(2) default 0,
+rezultat2 Number(2) default 0,
+etapa_eliminatorie number(2),
+data_meci date
+)
+/
+ALTER TABLE fixtures ADD (
+  CONSTRAINT fixtures_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE fixtures_seq;
+/
+CREATE SEQUENCE fixtures_seq START WITH 1;
+/
+CREATE OR REPLACE TRIGGER fixtures_bir 
+BEFORE INSERT ON fixtures
+FOR EACH ROW
+
+BEGIN
+  SELECT fixtures_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
 /
 insert into pozitie(nume) values('Atacant');
 insert into pozitie(nume) values('Portar');
@@ -413,6 +435,21 @@ update meciuri set etapa = 1 where data_meci >= to_date('03/5/2017','dd/mm/yyyy'
 update meciuri set etapa = 2 where data_meci >= to_date('10/5/2017','dd/mm/yyyy') and data_meci < to_date('17/5/2017','dd/mm/yyyy');
 update meciuri set etapa = 3 where data_meci >= to_date('17/5/2017','dd/mm/yyyy') and data_meci < to_date('24/5/2017','dd/mm/yyyy');
 update meciuri set etapa = 4 where data_meci >= to_date('24/5/2017','dd/mm/yyyy') and data_meci < to_date('31/5/2017','dd/mm/yyyy');
+
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci) 
+values(1,2,0,3,1,to_date('10/5/2017','dd/mm/yyyy'));
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci)  
+values(3,4,1,2,1,to_date('10/5/2017','dd/mm/yyyy'));
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci)  
+values(5,6,0,2,1,to_date('11/5/2017','dd/mm/yyyy'));
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci)  
+values(7,8,4,2,1,to_date('11/5/2017','dd/mm/yyyy'));
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci)  
+values(2,4,3,1,2,to_date('22/5/2017','dd/mm/yyyy'));
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci)  
+values(6,7,2,3,2,to_date('23/5/2017','dd/mm/yyyy'));
+insert into fixtures(id_echipa1,id_echipa2,rezultat1,rezultat2,etapa_eliminatorie,data_meci)  
+values(2,7,4,0,3,to_date('29/5/2017','dd/mm/yyyy'));
 
 insert into utilizator(username , parola , email , rol) values('alinapetrei','123123123','alinapetrei@gmail.com','admin');
 insert into utilizator(username , parola , email , rol) values('gabrielionesei','123456789','gabrielionesei@gmail.com','admin');

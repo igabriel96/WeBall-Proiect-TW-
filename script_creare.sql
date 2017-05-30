@@ -410,9 +410,9 @@ insert into jucatori(nume,prenume,id_nationalitate,varsta,id_echipa) values('Kag
 insert into jucatori(nume,prenume,id_nationalitate,varsta,id_echipa) values('Torres','Fernando','11','28','11');
 insert into jucatori(nume,prenume,id_nationalitate,varsta,id_echipa) values('Ronaldo','Cristiano','12','27','12');
 
-insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,2,1,to_date('3/4/2017','dd/mm/yyyy'));
-insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(3,1,1,to_date('4/4/2017','dd/mm/yyyy'));
-insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,4,1,to_date('5/4/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,2,1,to_date('3/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(3,1,1,to_date('4/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(1,4,1,to_date('5/5/2017','dd/mm/yyyy'));
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(2,3,1,to_date('6/5/2017','dd/mm/yyyy'));
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(4,2,1,to_date('9/5/2017','dd/mm/yyyy'));
 insert into meciuri(id_echipa1,id_echipa2,id_grupa,data_meci) values(4,3,1,to_date('10/5/2017','dd/mm/yyyy'));

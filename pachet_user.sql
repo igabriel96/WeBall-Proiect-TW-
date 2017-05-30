@@ -3,6 +3,7 @@ create or replace package weball_user as
 Function este_eligibil(p_username varchar2,p_email varchar2) return INTEGER;
 Function este_email_valid(p_email varchar2) return INTEGER;
 Function exista_user(p_username varchar2,p_parola varchar2) return INTEGER;
+Function exista_user_admin(p_username varchar2,p_parola varchar2) return INTEGER;
 end weball_user;
 /
 create or replace package body weball_user as 

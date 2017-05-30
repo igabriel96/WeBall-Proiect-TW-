@@ -129,6 +129,18 @@ switch($action){
 		}
 
 	break;
+		
+	case "login_admin":
+		require_once('class/class.user.php');
+		$id = login($_POST['username'], $_POST['password'] );
+		if ($id){
+			$_SESSION['uid'] = $id;
+			$_SESSION['username']=$_POST['username'];
+			$_SESSION['password']=$_POST['password'];
+			header('Location: index.php');
+		}
+
+	break;
 	case "update_account":
 		require_once('views/update_account.php');
 		break;

@@ -11,7 +11,12 @@
 	 </tr>
 	<?php  
   $db=oci_connect('student','STUDENT','localhost/XE');
-  $sql="select (Select nume from echipe where id=id_echipa1) as echipa1,(Select nume from echipe where id=id_echipa2) as echipa2,id_grupa,etapa ,rezultat1,rezultat2,data_meci from meciuri where etapa=".$_REQUEST['etapa'];
+  $sql="select id , 
+  (Select nume from echipe where id=id_echipa1) as echipa1, 
+  (Select logo from echipe where id=id_echipa1) as logo1, 
+  (Select logo from echipe where id=id_echipa2) as logo2,
+  (Select nume from echipe where id=id_echipa2) as echipa2,
+  id_grupa,etapa , rezultat1,rezultat2,data_meci from meciuri where etapa=".$_REQUEST['etapa'];
   echo '<br>';
   $statement=oci_parse($db,$sql);
   $result=oci_execute($statement);
@@ -27,13 +32,13 @@
                 <td>
                 <div id="scorescontainer">
                   <div id="leftimg">    
-                    <img src="images/<?php echo $row[3] ?>" >
+                    <img src="<?php echo $row['LOGO1'] ?>" >
                   </div>
                   <div id="centerscore">
                     <?php echo $row['REZULTAT1'].'-'.$row['REZULTAT2']?>
                   </div>       
                   <div id="rightimg">
-                      <img src="images/<?php echo $row[4] ?>" >
+                      <img src="<?php echo $row['LOGO2'] ?>" >
                  </div>
                </div>
               </td>

@@ -135,7 +135,33 @@ span.psw {
     color: red;
     cursor: pointer;
 }
-
+.match-1-1{
+    margin-top: 5%;
+    font-size: 33px;
+}
+.match-2-1{
+    font-size: 33px;    
+}
+.match-2-2{
+    font-size: 33px;    
+}
+.match-3-1{
+    font-size: 33px;    
+}
+.match-3-2{
+    font-size: 33px;    
+}
+.match-3-3{
+    font-size: 33px;    
+}
+.match-3-4{
+    font-size: 33px;    
+}
+.clasament-afisare-grupa{
+    
+    font-weight: bold;
+    color : white;
+}
 .tablematches th{
     background-color: #1a1aff;
     border : 1px solid white;
@@ -314,6 +340,11 @@ image{
     filter: grayscale(100%);
 }
 
-
+.footer {
+    position:fixed;
+    bottom:0;
+    color : white;
+    margin-left:37.5%;
+}
 
 </style>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-<?php require_once('header.css') ?>
+<link rel="stylesheet" type="text/css" href="views/header.css">
 
 <body>
 <p><center><a href="index.php" style="text-decoration: none;"><font size="10" color="#ede8ed"><strong>WeBall</strong></font></a></center></p>
@@ -9,6 +9,7 @@
 <a href="index.php?action=players" style="float:left;"> <button>Players</button></a>
 <a href="index.php?action=matches" style="float:left;"><button>Matches</button></a>
 <a href="index.php?action=ranking" style="float:left;"> <button>Ranking</button></a>
+<a href="index.php?action=fixtures" style="float:left;"> <button>Fixtures</button></a>  	
 
 
 

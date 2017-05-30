@@ -39,7 +39,7 @@ v_var integer;
 Begin
   select substr(p_username||' ',0,instr(p_username||' ',' ')-1) into v_username from dual;
   select substr(p_parola||' ',0,instr(p_parola||' ',' ')-1) into v_parola from dual;
-  select count(*) into v_var from utilizator where username=v_username and parola=v_parola;
+  select count(*) into v_var from utilizator where username=v_username and parola=v_parola and rol='user';
   if(length(p_username)!=length(v_username))then
     return 0;
   end if;
@@ -52,4 +52,30 @@ Begin
     return 0;
   end if;
 End exista_user;
+
+
+
+--------------functie pentru ADMIN---------------------
+Function exista_user_admin(p_username varchar2,p_parola varchar2) return INTEGER as
+v_username varchar(50);
+v_parola varchar(50);
+v_var integer;
+Begin
+  select substr(p_username||' ',0,instr(p_username||' ',' ')-1) into v_username from dual;
+  select substr(p_parola||' ',0,instr(p_parola||' ',' ')-1) into v_parola from dual;
+  select count(*) into v_var from utilizator where username=v_username and parola=v_parola and rol='admin';
+  if(length(p_username)!=length(v_username))then
+    return 0;
+  end if;
+  if(length(p_parola)!=length(v_parola))then
+    return 0;
+  end if;
+  if(v_var>0)then
+    return 1;
+  else
+    return 0;
+  end if;
+End exista_user_admin;
+
+
 End weball_user;

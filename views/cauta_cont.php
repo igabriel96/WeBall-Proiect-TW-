@@ -10,13 +10,6 @@
       <input type="text"  maxlength="20" placeholder="Name"  name="nume_cont" required>
       <button type="Submit">Search</button>
     </div>
-	
-</form>
-    
-</html>
-
-
-
 
 
 

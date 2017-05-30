@@ -16,7 +16,7 @@
 <?php if(!$_SESSION['uid']):?>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register</button>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
-<button  style="float:right;width:100px;" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Admins</button>
+<button  style="float:right;width:100px;" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Admins</button>
 
 <?php else:?>
 <a href="index.php?action=logout" style="float:right;"> <button>Logout</button></a>
@@ -135,6 +135,37 @@
     </div>
   </form>
 </div>
+	
+
+<div id="id03" class="modal">
+
+  <form class="modal-content animate" action="index.php?action=login_admin" method="POST">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+       <input type="hidden" value="login" name="action">
+
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Remember me
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+
+
+
 
 
 
@@ -152,6 +183,9 @@ window.onclick = function(event) {
     }
 	if (event.target == modal_2) {
         modal_2.style.display = "none";
+    }
+   if (event.target == modal_3) {
+        modal_3.style.display = "none";
     }
 }
 </script>

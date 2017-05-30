@@ -167,9 +167,11 @@ span.psw {
     border : 1px solid white;
     text-align: center;
     font-weight: bold;
+    color : white;
 }
 .tablematches td{
     text-align: center;
+    color : white;
 }
 .tablematches img{
     width: 50px;

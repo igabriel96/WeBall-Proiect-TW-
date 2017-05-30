@@ -8,6 +8,19 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "insert_echipa":
+		require_once('views/insert_echipa.php');
+		header('Location: index.php?action=alege_tip_echipa');
+		break;
+	case "alege_tip_echipa":
+		require_once('views/alege_tip_echipa.php');
+		break;	
+	case "inregistreaza_echipa_noua":
+		require_once('views/inregistreaza_echipa_noua.php');
+		break;
+	case "inregistreaza_echipa_reala":
+		require_once('views/inregistreaza_echipa_reala.php');
+		break;
 	case "matches":
 		require_once('views/matches.php');
 		break;
@@ -55,9 +68,6 @@ switch($action){
 		$echipe=oci_parse($db,$sql);
 		oci_execute($echipe);
 		require_once('views/inregistreaza_jucator.php');
-		break;
-	case "inregistreaza_echipa":
-		require_once('views/inregistreaza_echipa.php');
 		break;
 	case "optiuni_organizatorii":
 		require_once('views/optiuni_organizatorii.php');

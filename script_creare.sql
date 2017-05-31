@@ -53,7 +53,7 @@ END;
 Create Table echipe(
 id NUMBER(10),
 nume Varchar2(50) Not NULL,
-logo Varchar2(50) Not NULL,
+logo Varchar2(500) Not NULL,
 tara Varchar2(50) Not NULL,
 numar_jucatori NUMBER(5),
 id_grupa Varchar2(50)

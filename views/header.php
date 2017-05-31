@@ -17,14 +17,14 @@
 <?php if(!$_SESSION['uid']):?>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register</button>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
-<button  style="float:right;width:100px;" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Admins</button>
-
 <?php else:?>
 <a href="index.php?action=logout" style="float:right;"> <button>Logout</button></a>
 <a href="index.php?action=update_scoruri" style="float:right;"><button>Update scores</button></a>
+<?php if($_SESSION['rol']=='admin'){?>
 <a href="index.php?action=optiuni_organizatorii" style="float:right;"><button>Organization</button></a>
-<a href="index.php?action=optiuni_conturi" style="float:right;"><button> My Account</button></a>
 <a href="index.php?action=users_accounts" style="float:right;"><button>Users accounts</button></a>
+<?php }?>
+<a href="index.php?action=optiuni_conturi" style="float:right;"><button> My Account</button></a>
 <?php endif;?>
 
 
@@ -136,47 +136,10 @@
     </div>
   </form>
 </div>
-	
-
-<div id="id03" class="modal">
-
-  <form class="modal-content animate" action="index.php?action=login_admin" method="POST">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
-
-    <div class="container">
-      <label><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-
-      <label><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-       <input type="hidden" value="login" name="action">
-
-      <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Remember me
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-
-
-
-
-
-
-
-
 <script >
 // Get the modal
 var modal_1 = document.getElementById('id01');
 var modal_2 = document.getElementById('id02');
-var modal_3=document.getElementById('id03');
-
 // When the user clicks anywhere outside of the modal_1, close it
 window.onclick = function(event) {
     if (event.target == modal_1) {
@@ -184,9 +147,6 @@ window.onclick = function(event) {
     }
 	if (event.target == modal_2) {
         modal_2.style.display = "none";
-    }
-   if (event.target == modal_3) {
-        modal_3.style.display = "none";
     }
 }
 </script>

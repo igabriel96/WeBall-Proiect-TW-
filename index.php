@@ -78,8 +78,11 @@ switch($action){
 	case "cauta_cont":
 		require_once('views/cauta_cont.php');
 		break;
-	case "elimina_conturi":
-		require_once('views/elimina_conturi.php');
+	case "afisare_cont":
+        	require_once('views/afisare_cont.php');
+        	break;	
+	case "sterge_cont":
+		require_once('views/sterge_cont.php');
 		break;	
 	case "vizualizare_detalii":
 		require_once('views/vizualizare_detalii.php');

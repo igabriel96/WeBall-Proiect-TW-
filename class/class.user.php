@@ -123,6 +123,14 @@
 			
 		}
 		$id =$row[0];
+		//verificare rol user
+		$sql="Select rol from utilizator where username=:nume and parola=:password";
+		$statement=oci_parse($db,$sql);
+		oci_bind_by_name($statement,':nume', $username);
+		oci_bind_by_name($statement,':password',$password);
+		oci_execute($statement);
+		$row=oci_fetch_array($statement);
+		$_SESSION['rol']=$row[0];
 		return $id;
 
 
@@ -132,46 +140,6 @@
 		return false;
 	}
 }
-
-
-
- function login_admin($username,$password)
-{ global $db;
-	try{
-		if(empty($username) )
-			throw new Exception('Empty username.');
-
-		if(empty($password))
-			throw new Exception('The password doesnt exist. Retry.');
-
-		//print_r($username);
-		//print_r($password);
-		$interogare="Select weball_user.exista_user_admin("."'".$username."'".","."'".$password."') from dual";
-	//	$interogare="Select * from users";
-		$q=oci_parse($db, $interogare);
-		$result=oci_execute($q);
-		if(!$result)
-		{
-			throw new Exception('Go to login , eroare la conectarea cu baza de date');
-		}
-		$row=oci_fetch_row($q);
-		if($row==0)
-		{
-			throw new Exception("Userul nu exista");
-			
-		}
-		$id =$row[0];
-		return $id;
-
-
-	}
-	catch (Exception $e) {
-		echo $e->getMessage();
-		return false;
-	}
-}
-
-
 function deletecont()
 {
 	global $db;

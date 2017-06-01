@@ -10,9 +10,9 @@ if(!isset($_REQUEST['password']) && !isset($_REQUEST['newpassword']))
       <label><b>Old Password</b></label>
       <input type="password"  placeholder="Enter Old Password"  name="password" required>
 	  <label><b>New Password</b></label>
-      <input type="password" placeholder="Enter New Password" name="newpassword" required>
+      <input type="password" placeholder="Enter New Password" name="newpassword" pattern=".{6,}" title="The new password should contain at least six characters">
       <label><b>Confirm Password</b></label>    
-      <input type="password" placeholder="Confirm New Password" name="confirmpassword" required>
+      <input type="password" placeholder="Confirm New Password" name="confirmpassword" pattern=".{6,}" title="The new password should contain at least six characters">
       <button type="Submit">Update account</button>
     </div>
 <?php } else {

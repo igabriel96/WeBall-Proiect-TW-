@@ -8,6 +8,9 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "search_account":
+		require_once('views/search_account.php');
+		break;	
 	case "my_account_details":
         $sql = "select username , parola , email , rol from utilizator where username ='".$_SESSION['username']."'";
         $statement=oci_parse($db ,$sql);

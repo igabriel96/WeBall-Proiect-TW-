@@ -28,6 +28,10 @@ switch($action){
 		require_once('views/alege_tip_echipa.php');
 		break;	
 	case "inregistreaza_echipa_noua":
+		$sql = "select count(distinct grupa) from clasament";
+        	$statement=oci_parse($db ,$sql);
+        	$result=oci_execute($statement);
+        	$row = oci_fetch_row($statement);
 		require_once('views/inregistreaza_echipa_noua.php');
 		break;
 	case "inregistreaza_echipa_reala":

@@ -8,6 +8,12 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "my_account_details":
+        $sql = "select username , parola , email , rol from utilizator where username ='".$_SESSION['username']."'";
+        $statement=oci_parse($db ,$sql);
+        $result=oci_execute($statement);
+		require_once('views/my_account_details.php');
+		break;
 	case "seteaza_model_organizational":
 		require_once('views/seteaza_model_organizational.php');
 		break;
@@ -75,9 +81,6 @@ switch($action){
 	case "optiuni_organizatorii":
 		require_once('views/optiuni_organizatorii.php');
 		break;
-	case "optiuni_conturi":
-		require_once('views/optiuni_conturi.php');
-		break;	
 	case "cauta_cont":
 		require_once('views/cauta_cont.php');
 		break;

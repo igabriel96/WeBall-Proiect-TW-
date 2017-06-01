@@ -24,7 +24,7 @@
 <a href="index.php?action=optiuni_organizatorii" style="float:right;"><button>Organization</button></a>
 <a href="index.php?action=users_accounts" style="float:right;"><button>Users accounts</button></a>
 <?php }?>
-<a href="index.php?action=optiuni_conturi" style="float:right;"><button> My Account</button></a>
+<a href="index.php?action=my_account_details" style="float:right;"><button> My Account</button></a>
 <?php endif;?>
 
 

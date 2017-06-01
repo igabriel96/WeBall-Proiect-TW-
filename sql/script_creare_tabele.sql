@@ -258,11 +258,55 @@ BEGIN
 END;
 /
 create or replace package organizare_campionat as
-tip_campionat varchar2(100);
-numar_maxim_echipe_campionat integer;
-numar_echipe_campionat integer;
-numar_maxim_echipe_grupa integer;
+tip_campionat varchar2(100):='necunoscut';
+nr_maxim_echipe_campionat integer;
+nr_echipe_campionat integer;
+nr_maxim_echipe_grupa integer;
+function getTipCampionat return varchar2;
+function getNrMaximEchipeCampionat return integer;
+function getNrEchipeCampionat return integer;
+function getNrMaximEchipeGrupa return integer;
+function setTipCampionat(tip varchar2) return integer;
+function setNrMaximEchipeCampionat(nrMaximEchipeCampionat integer) return integer;
+function setNrEchipeCampionat(nrEchipeCampionat integer) return integer;
+function setNrMaximEchipeGrupa(nrMaximEchipeGrupa integer) return integer;
 end organizare_campionat;
+/
+create or replace package body organizare_campionat as
+function setTipCampionat(tip varchar2) return integer as
+begin
+  tip_campionat:=tip;
+end setTipCampionat;
+function setNrMaximEchipeCampionat(nrMaximEchipeCampionat integer) return integer as
+begin
+  nr_maxim_echipe_campionat:=nrMaximEchipeCampionat;
+end setNrMaximEchipeCampionat;
+function setNrEchipeCampionat(nrEchipeCampionat integer) return integer as
+begin
+  nr_echipe_campionat:=nrEchipeCampionat;
+end setNrEchipeCampionat;
+function setNrMaximEchipeGrupa(nrMaximEchipeGrupa integer) return integer as
+begin
+  nr_maxim_echipe_grupa:=nrMaximEchipeGrupa;
+end setNrMaximEchipeGrupa;
+function getTipCampionat return varchar2 as
+begin
+    return tip_campionat;
+end getTipCampionat;
+function getNrMaximEchipeCampionat   return integer as 
+begin 
+  return nr_maxim_echipe_campionat;
+end getNrMaximEchipeCampionat;
+function getNrEchipeCampionat return integer as
+begin
+  return nr_echipe_campionat;
+end getNrEchipeCampionat;
+function getNrMaximEchipeGrupa  return integer as
+begin 
+  return nr_maxim_echipe_grupa;
+end getNrMaximEchipeGrupa;
+end organizare_campionat;
+
 /
 Commit;
 /

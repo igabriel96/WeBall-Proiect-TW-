@@ -25,7 +25,8 @@ $sql="Select username ,data_review,text from review join utilizator on review.id
             <div class="reviewblock">
               <div class="review">
                  <p> Review added by <br><b><?php echo oci_result($statement, 'USERNAME');?>  </b><br><small><?php   
-                $delta_time = time() - ( strtotime(substr(oci_result($statement, 'DATA_REVIEW'),1,17)) - 10800 );
+                date_default_timezone_set('Europe/London');                
+                 $delta_time = time() - strtotime(substr(oci_result($statement, 'DATA_REVIEW'),1,17).substr(oci_result($statement,'DATA_REVIEW'),25,3))+7200;
                 $hours = floor($delta_time / 3600);
                 $delta_time %= 3600;
                 $minutes = floor($delta_time / 60);

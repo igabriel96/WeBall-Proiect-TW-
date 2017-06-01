@@ -8,7 +8,7 @@
  	<?php  
    $db=oci_connect('student','STUDENT','localhost/XE');
    echo $_REQUEST['id_echipa'];
-   $sql = "SELECT nume,prenume,varsta, (select nume from nationalitate where id = id_nationalitate) as nationalitate from jucatori where id_echipa=".$_REQUEST['id_echipa'];
+   $sql = "SELECT nume,prenume,varsta, nationalitate from jucatori where id_echipa=".$_REQUEST['id_echipa'];
    echo '<br>';
    $statement=oci_parse($db,$sql);
    $result=oci_execute($statement);

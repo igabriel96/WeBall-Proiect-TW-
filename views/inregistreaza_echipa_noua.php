@@ -13,9 +13,9 @@ if(!isset($_REQUEST['nameofteam']))
       <label><b>Country</b></label>
       <input type="text"  placeholder="Insert the country of the team" maxlength="20" name="country" pattern="[a-zA-Z].{3,}" title="The name of the team should have at least four letters">
       <label><b>Number of players</b></label>
-      <input type="number" name="numberofplayers" min="11" max="30"><br>
+      <input type="number" name="numberofplayers" placeholder="Insert the number of players" min="11" max="30"><br>
       <label><b>Group number</b></label>
-      <input type="number" name="groupnumber" min="1" max="<?php echo $row[0] ?>"> 
+      <input type="number" name="groupnumber" placeholder="Insert the group number" min="1" max="<?php echo $row[0] ?>"> 
       <button type="Submit">Register Team</button>
     </div>  
   </form>

@@ -141,8 +141,8 @@ switch($action){
 			$_SESSION['uid'] = $id;
 			$_SESSION['username']=$_POST['username'];
 			$_SESSION['password']=$_POST['password'];
-			header('Location: index.php');
 		}
+		header('Location: index.php');
 
 	break;
 	case "update_account":

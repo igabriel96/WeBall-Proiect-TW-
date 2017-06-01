@@ -8,6 +8,9 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "seteaza_model_organizational":
+		require_once('views/seteaza_model_organizational.php');
+		break;
 	case "insert_echipa":
 		require_once('views/insert_echipa.php');
 		header('Location: index.php?action=alege_tip_echipa');

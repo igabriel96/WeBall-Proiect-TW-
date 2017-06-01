@@ -1,4 +1,6 @@
 <?php require_once('header.php') ?>
+<img src="images/nefinalizat.gif" style="display: block;margin: 0 auto;"></src>
+<?php if(7>8){?>
 <div>
 	<form action="http://localhost:8181/TW/index.php?action=update_scoruri&find_on=1" method="POST">
     <div class="container">
@@ -31,5 +33,5 @@
 		</tr>
 	<?php } ?>
 <table>
-<?php }?>
-
+<?php }
+}?>

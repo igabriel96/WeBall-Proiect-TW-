@@ -129,12 +129,6 @@ span.psw {
     color: red;
     cursor: pointer;
 }
-
-.close:hover,
-.close:focus {
-    color: red;
-    cursor: pointer;
-}
 .match-1-1{
     margin-top: 5%;
     font-size: 33px;
@@ -203,17 +197,19 @@ span.psw {
     text-decoration: none;
     color: white;
 }
-#reviewblock{
+.reviewblock{
     display:table;
     width: 100%;
+    color: white;
 }
 .review{
    float:left;
    border-right: 1px solid white;
+   width: 16.5%;
 }
 .reviewtext{
-    margin-left:200px;
-    float:none;
+    width: 80%;
+    margin-left: 20%;
 }
 .poll-body { 
 	font-size: 62.5%; 
@@ -232,7 +228,7 @@ span.psw {
 }
 fieldset {
 	margin: 115px auto;
-	width: 400px;
+	width: 300px;
 	padding: 8px 15px 15px 15px;
 	border: 1px solid white;
 	display: block; 

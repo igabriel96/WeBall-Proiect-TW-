@@ -185,7 +185,7 @@ id NUMBER(10),
 id_utilizator Number(10) ,
 id_meci Number(10) ,
 text Varchar2(255),
-data_review date  default CURRENT_TIMESTAMP ,
+data_review timestamp(6)  default CURRENT_TIMESTAMP ,
 is_deleted number(10)
 )
 /

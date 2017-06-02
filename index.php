@@ -11,6 +11,7 @@ switch($action){
 	case "creaza_etape":
 		$sql="begin 
 		creare_meciuri();
+		inserare_echipe_clasament();
 		end;";
 		$statement=oci_parse($db ,$sql);
 		$result=oci_execute($statement);

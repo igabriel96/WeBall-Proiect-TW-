@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <?php require_once('header.php') ?>
+<?php 
+if(isset($_REQUEST['id_review'])) {
+  $sql="update review set text ='".$_REQUEST['editreview']."' where id = ".$_REQUEST['id_review'];
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);                                                                                              
+} ?>
 <div class="container">
 <button onclick="document.getElementById('review_block').style.display='block'">Add review</button>
 </div>
@@ -32,9 +38,17 @@ $sql="Select username ,data_review,text from review join utilizator on review.id
                 $minutes = floor($delta_time / 60);
                 echo " {$hours} hours and {$minutes}  minutes ago";  ?></small></p>
               </div>
-              <div class="reviewtext">
+              <div class="review-right-side">
+              <div class="review-text">  
                 <p> <?php echo oci_result($statement,'TEXT'); ?></p>
               </div>
+              <div class="review-edit-delete">
+                  <a href="http://localhost:8181/TW-TEST/index.php?action=edit_review&id_review=<?php echo oci_result($statement,'ID')?>"style="text-decoration:none;color: white">Edit</a>
+              </div> 
+              <div class="review-edit-delete">
+                 Delete
+              </div>
+            </div> 
             </div>
             <hr>
       <?php 

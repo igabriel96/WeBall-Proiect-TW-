@@ -24,7 +24,7 @@ if(isset($_REQUEST['text'])&&$_SESSION['text']!=$_REQUEST['text'])
     $statement=oci_parse($db,$sql);
     oci_execute($statement);     
 }
-$sql="Select username ,data_review,text from review join utilizator on review.id_utilizator=utilizator.id where is_deleted=0 and id_meci=".$_REQUEST['id_meci']." order by data_review desc";
+$sql="Select review.id , username ,data_review,text from review join utilizator on review.id_utilizator=utilizator.id where is_deleted=0 and id_meci=".$_REQUEST['id_meci']." order by data_review desc";
     $statement=oci_parse($db,$sql);
     oci_execute($statement);
         while(oci_fetch($statement)){ ?>
@@ -43,7 +43,7 @@ $sql="Select username ,data_review,text from review join utilizator on review.id
                 <p> <?php echo oci_result($statement,'TEXT'); ?></p>
               </div>
               <div class="review-edit-delete">
-                  <a href="http://localhost:8181/TW-TEST/index.php?action=edit_review&id_review=<?php echo oci_result($statement,'ID')?>"style="text-decoration:none;color: white">Edit</a>
+                  <a href="http://localhost:8181/TW/index.php?action=edit_review&id_review=<?php echo oci_result($statement,'ID')?>"style="text-decoration:none;color: white">Edit</a>
               </div> 
               <div class="review-edit-delete">
                  Delete

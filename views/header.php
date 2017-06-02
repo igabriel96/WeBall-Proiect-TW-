@@ -22,7 +22,7 @@
 <?php if($_SESSION['rol']=='admin'){?>
 <a href="index.php?action=update_scoruri" style="float:right;"><button>Update scores</button></a>
 <a href="index.php?action=optiuni_organizatorii" style="float:right;"><button>Organization</button></a>
-<a href="index.php?action=users_accounts" style="float:right;"><button>Users accounts</button></a>
+<a href="index.php?action=search_account" style="float:right;"><button>Users accounts</button></a>
 <?php }?>
 <a href="index.php?action=my_account_details" style="float:right;"><button> My Account</button></a>
 <?php endif;?>
@@ -53,7 +53,7 @@
 	    <label><b>Email</b></label>
       <input type="text" placeholder="Enter Email" name="email" required>
 
-     <button < type="submit">Register</button> 
+     <button type="submit">Register</button> 
 
     </div></font>
 

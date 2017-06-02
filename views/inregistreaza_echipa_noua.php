@@ -13,9 +13,11 @@ if(!isset($_REQUEST['nameofteam']))
       <label><b>Country</b></label>
       <input type="text"  placeholder="Insert the country of the team" maxlength="20" name="country" pattern="[a-zA-Z].{3,}" title="The name of the team should have at least four letters">
       <label><b>Number of players</b></label><br>
-      <input type="number" name="numberofplayers" placeholder="Number of players" min="11" max="30"><br>
+      <input type="number" name="numberofplayers" placeholder="Number of players" min="11" max="30" style=" width: 14%;
+    padding: 10px 20px"><br>
       <label><b>Group number</b></label><br>
-      <input type="number" name="groupnumber" placeholder="Group number" min="1" max="<?php echo $row[0] ?>"> 
+      <input type="number" name="groupnumber" placeholder="Group number" min="1" max="<?php echo $row[0] ?>" style=" width: 14%;
+    padding: 10px 20px">
       <button type="Submit">Register Team</button>
     </div>  
   </form>
@@ -34,15 +36,4 @@ if(!isset($_REQUEST['nameofteam']))
         text-align: center;margin-top : 5%">Ai inregistrat echipa cu succes!</p>';    
 }
 }?>
-<style>
-    input[type=number]{
-    width: 17%;
-    padding: 10px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-        
-    }
-</style>
 <?php require_once('views/footer.php');

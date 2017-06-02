@@ -8,6 +8,9 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "edit_review":
+ 		require_once('views/edit_review.php');
+ 		break;    	
 	case "creaza_etape":
 		$sql="begin 
 		creare_meciuri();

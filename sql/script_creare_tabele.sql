@@ -3,6 +3,8 @@ DROP TABLE echipe
 /
 DROP TABLE meciuri
 /
+Drop Table global_date
+/
 DROP TABLE grupa
 /
 DROP TABLE clasament
@@ -261,6 +263,53 @@ create table global_date(id integer primary key ,tip_campionat varchar2(100) ,nr
 
 /
 insert into global_date(id,tip_campionat,nr_maxim_echipe_campionat,nr_maxim_echipe_grupa,nr_echipe_campionat,nr_echipe_grupa) values(1,'necunoscut',0,0,0,0)
+/
+create or replace procedure creare_meciuri as
+Type myVect is Table of Number(10) index by pls_integer;
+v1 myVect;
+v2 myVect;
+type_champ varchar2(100);
+nr_echipe integer;
+contor integer(10):=1;
+contor2 integer:=1;
+contor3 integer :=1;
+Cursor curs is select * from echipe;
+Begin
+  for indx in curs LOOP
+      v1(contor):=indx.id;
+      contor:= contor + 1;
+  End loop;
+  Select tip_campionat into type_champ from global_date where id=1;
+  if( type_champ='campionat')then
+    Select nr_maxim_echipe_campionat into nr_echipe from global_date where id=1;
+    dbms_output.put_line(nr_echipe);
+    contor2:=1;
+    while contor2 <=  nr_echipe loop
+      contor3:=1;
+      while contor3 <= nr_echipe/2 loop
+        insert into meciuri(id_echipa1,id_echipa2,etapa) values(v1(contor3) ,v1(nr_echipe -contor3+1),contor2);  
+        contor3:=contor3 +1;
+      end loop;
+      for con in v1.first..v1.last LOOP
+        dbms_output.put_line(con);
+        if(con=1)then
+          v2(1):=v1(v1.last);
+        else
+            v2(con):=v1(con-1);
+        end if;
+      end loop;
+    for con in v2.first..v2.last loop
+      v1(con):=v2(con);
+    end loop;
+    contor2:=contor2+1;
+    end loop;
+  end if;
+End creare_meciuri;
+/
+create or replace trigger global_date_echipe after insert on echipe 
+begin
+   update global_date set nr_echipe_campionat=nr_echipe_campionat+1 ,nr_echipe_grupa=nr_echipe_grupa+1;
+end global_date_echipe;
 /
 Commit;
 /

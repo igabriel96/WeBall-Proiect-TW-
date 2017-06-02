@@ -69,6 +69,14 @@ switch($action){
 		require_once('views/matches.php');
 		break;
         case "reviews":
+		$sql = "select * from (select text from review order by data_review desc) where rownum = 1";
+        	$statement=oci_parse($db ,$sql);
+        	$result=oci_execute($statement);
+        	$row = oci_fetch_row($statement);
+        	$_SESSION['text'] = $row[0];
+        	$sql = "select id from utilizator where username ='".$_SESSION['username']."'";
+        	$statement=oci_parse($db ,$sql);
+        	$result=oci_execute($statement);
                 require_once('views/reviews.php');
                 break;
 	case "poll":

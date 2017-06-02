@@ -12,13 +12,17 @@ if($row[0]!='necunoscut')
 		$statement=oci_parse($db,$sql);
 		oci_execute($statement);
 		$row2=oci_fetch_array($statement);
+		$sql="Select  count(*) from meciuri";
+		$statement=oci_parse($db,$sql);
+		oci_execute($statement);
+		$row3=oci_fetch_array($statement);
 		if($row2['TIP_CAMPIONAT']=='campionat'&&$row2['NR_MAXIM_ECHIPE_CAMPIONAT']>$row2['NR_ECHIPE_CAMPIONAT'])
 			echo '<a href="index.php?action=alege_tip_echipa" style="float:center;"><button>Register team</button></a>';
 		if($row2['TIP_CAMPIONAT']=='cupa'&&$row2['NR_MAXIM_ECHIPE_CUPA']>$row2['NR_ECHIPE_CUPA']*4)
 			echo '<a href="index.php?action=alege_tip_echipa" style="float:center;"><button>Register team</button></a>';
-		if($row2['TIP_CAMPIONAT']=='campionat'&&$row2['NR_MAXIM_ECHIPE_CAMPIONAT']=$row2['NR_ECHIPE_CAMPIONAT'])
+		if($row2['TIP_CAMPIONAT']=='campionat'&&$row2['NR_MAXIM_ECHIPE_CAMPIONAT']=$row2['NR_ECHIPE_CAMPIONAT']&&$row3[0]==0)
 			echo '<a href="index.php?action=creaza_etape" style="float:center;"><button>Stabileste meciuri</button></a>';
-		if($row2['TIP_CAMPIONAT']=='cupa'&&$row2['NR_MAXIM_ECHIPE_CUPA']=$row2['NR_ECHIPE_CUPA']*4)
+		if($row2['TIP_CAMPIONAT']=='cupa'&&$row2['NR_MAXIM_ECHIPE_CUPA']=$row2['NR_ECHIPE_CUPA']*4&&$row3[0]==0)
 			echo '<a href="index.php?action=creaza_etape" style="float:center;"><button>Stabileste_meciuri</button></a>';
 	?>
 

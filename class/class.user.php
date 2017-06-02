@@ -154,8 +154,9 @@ function deletecont()
 	function logout (){
 	if (isset($_SESSION['uid'])) {
 	   session_destroy();
-	   echo "You are logged out successufuly!";
+	   echo '<p style="color: white;
+        text-align: center">You are logged out successfuly!</p>';
 	}
-	 echo "<br/><a href='index.php'>login</a>";
-
-	}
+	 echo '<center><a href="index.php" style="color : white ; text-decoration : none;border : 1px solid white">Back to home</a></center>';
+	
+    }

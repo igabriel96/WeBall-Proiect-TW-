@@ -107,17 +107,6 @@ switch($action){
 		}
 		require_once('views/players.php');
 		break;
-	/*case "sterge_echipa":
-		if(isset($_REQUEST['filter_on']))
-		{
-			$sql="Select id,nume,tara,id_grupa from echipe where upper(nume)=upper('";
-			$sql.=$_REQUEST['nume'];
-			$sql.="')";
-			$statement=oci_parse($db,$sql);
-			oci_execute($statement);
-		}
-		require_once('views/sterge_echipa.php');
-		break; */
 	case "inregistreaza_jucator":
 		$sql='Select distinct nationalitate from jucatori';
 		$tari=oci_parse($db,$sql);
@@ -137,6 +126,9 @@ switch($action){
         	require_once('views/afisare_cont.php');
         	break;	
 	case "sterge_cont":
+		$sql = "select username , parola , email , rol from utilizator where username ='".$_SESSION['username']."'";
+      		$statement=oci_parse($db ,$sql);
+      		$result=oci_execute($statement);
 		require_once('views/sterge_cont.php');
 		break;	
 	case "vizualizare_detalii":

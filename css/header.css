@@ -3,8 +3,8 @@
 /*button for update*/
 .btn-group button {
 	
-    background-color: #800080; /* Violet background */
-    border: 1px solid #800080; /* Violet border */
+    background-color: #00264d; /* Violet background */
+    border: 1px solid #00264d; /* Violet border */
     color: white; /* White text */
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
@@ -15,7 +15,7 @@
 .button_cursor
 {
 
-   background-color: #800080;
+   background-color: #00264d;
     color: white;
     padding: 8px 0px;
     margin: 0px 0;
@@ -54,7 +54,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-    background-color: #800080;
+    background-color: #00264d;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -157,7 +157,7 @@ span.psw {
     color : white;
 }
 .tablematches th{
-    background-color: #1a1aff;
+    background-color: #00264d;
     border : 1px solid white;
     text-align: center;
     font-weight: bold;
@@ -294,7 +294,6 @@ td {
     width: 250px;
     border: 1px solid #CCC;
     padding: 10px;
-    background-color: white;
 }
 table{
 

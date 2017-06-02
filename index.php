@@ -8,6 +8,14 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "creaza_etape":
+		$sql="begin 
+		creare_meciuri();
+		end;";
+		$statement=oci_parse($db ,$sql);
+		$result=oci_execute($statement);
+		header('Location: index.php?action=matches');
+		break;
 	case "search_account":
 		require_once('views/search_account.php');
 		break;	
@@ -17,11 +25,23 @@ switch($action){
         $result=oci_execute($statement);
 		require_once('views/my_account_details.php');
 		break;
+	case "insert_model_organizational":
+		require_once('views/insert_model_organizational.php');
+		header('index.php?action=optiuni_organizatorii');
+		break;
 	case "seteaza_model_organizational":
 		require_once('views/seteaza_model_organizational.php');
 		break;
 	case "insert_echipa":
 		require_once('views/insert_echipa.php');
+		$sql="Select * from global_date";
+		$statement=oci_parse($db ,$sql);
+        	$result=oci_execute($statement);
+        	$row=oci_fetch_array($statement);
+        	if($row['TIP_CAMPIONAT']=='campionat'&&$row['NR_MAXIM_ECHIPE_CAMPIONAT']==$row['NR_ECHIPE_CAMPIONAT'])
+        		header('Location: index.php');
+        	if($row['TIP_CUPA']=='campionat'&&$row['NR_MAXIM_ECHIPE_CUPA']==$row['NR_ECHIPE_CUPA']* 4)
+        		header('Location: index.php');
 		header('Location: index.php?action=alege_tip_echipa');
 		break;
 	case "alege_tip_echipa":

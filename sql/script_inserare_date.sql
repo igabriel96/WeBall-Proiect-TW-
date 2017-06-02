@@ -33,6 +33,27 @@ insert into jucatori(nume,prenume,nationalitate,varsta,id_echipa) values('Camata
 insert into jucatori(nume,prenume,nationalitate,varsta,id_echipa) values('Duckadam','Helmuth','Romana','44','11');
 insert into jucatori(nume,prenume,nationalitate,varsta,id_echipa) values('Lacatus','Marius','Romana','41','12');
 
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(1,2,1,1,1,to_date('5/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(2,3,1,2,1,to_date('6/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(3,4,1,2,1,to_date('7/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(1,4,1,3,1,to_date('8/5/2017','dd/mm/yyyy'));
+
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(5,6,2,0,2,to_date('11/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(7,8,1,1,2,to_date('12/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(5,6,1,0,2,to_date('13/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(6,8,3,3,2,to_date('14/5/2017','dd/mm/yyyy'));
+
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(9,10,3,2,3,to_date('20/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(10,11,4,4,3,to_date('21/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(11,12,2,0,3,to_date('22/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(9,11,1,2,3,to_date('23/5/2017','dd/mm/yyyy'));
+
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(13,14,1,1,4,to_date('25/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(15,16,1,3,4,to_date('26/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(13,15,0,2,4,to_date('27/5/2017','dd/mm/yyyy'));
+insert into meciuri(id_echipa1,id_echipa2,rezultat1,rezultat2,id_grupa,data_meci) values(14,16,0,6,4,to_date('28/5/2017','dd/mm/yyyy'));
+
+
 update meciuri set etapa = 1 where data_meci >= to_date('03/5/2017','dd/mm/yyyy') and data_meci < to_date('10/5/2017','dd/mm/yyyy');
 update meciuri set etapa = 2 where data_meci >= to_date('10/5/2017','dd/mm/yyyy') and data_meci < to_date('17/5/2017','dd/mm/yyyy');
 update meciuri set etapa = 3 where data_meci >= to_date('17/5/2017','dd/mm/yyyy') and data_meci < to_date('24/5/2017','dd/mm/yyyy');

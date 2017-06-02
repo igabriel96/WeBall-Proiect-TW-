@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php require_once('header.php') ?>
 
-<form class="modal-content animate" action="http://localhost:8181/TW-TEST/index.php?action=reviews&id_meci=1" method="POST" style="width: 50%;height:40%">
+<form class="modal-content animate" action="http://localhost:8181/index.php?action=reviews&id_meci=1" method="POST" style="width: 50%;height:40%">
  
 	<div class="container">
     <label><b><center>Edit your review</center></b></label>

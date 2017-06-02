@@ -207,9 +207,19 @@ span.psw {
    border-right: 1px solid white;
    width: 16.5%;
 }
-.reviewtext{
-    width: 80%;
-    margin-left: 20%;
+.review-right-side{
+    width: 82%;
+    margin-left: 18%;
+}
+.review-text{
+    width:80%;
+    float:left;
+}
+.review-edit-delete{
+    text-align: center;
+    width: 8%;
+    float:right;
+    border: 1px solid white;
 }
 .poll-body { 
 	font-size: 62.5%; 

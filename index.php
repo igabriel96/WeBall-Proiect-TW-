@@ -77,7 +77,7 @@ switch($action){
 		require_once('views/sterge_echipa.php');
 		break; */
 	case "inregistreaza_jucator":
-		$sql='Select nume from nationalitate';
+		$sql='Select distinct nationalitate from jucatori';
 		$tari=oci_parse($db,$sql);
 		oci_execute($tari);
 		$sql='Select nume from echipe';

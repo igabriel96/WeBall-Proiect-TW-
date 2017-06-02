@@ -38,6 +38,13 @@ switch($action){
 		require_once('views/inregistreaza_echipa_reala.php');
 		break;
 	case "matches":
+		if (! $_SESSION['uid'] ){
+			require_once('views/header.php');
+                echo '<p style="color: white;
+                text-align: center;margin-top : 5%">Trebuie sa te loghezi ca sa poti benificia de aceasta functionalitate</p>';
+            	require_once('views/footer.php');
+			exit;
+		}
 		require_once('views/matches.php');
 		break;
         case "reviews":
@@ -50,9 +57,23 @@ switch($action){
      	        require_once('views/pollresults.php');
     		break;
 	case "ranking":
+		if (! $_SESSION['uid'] ){
+			require_once('views/header.php');
+                echo '<p style="color: white;
+                text-align: center;margin-top : 5%">Trebuie sa te loghezi ca sa poti benificia de aceasta functionalitate</p>';
+            	require_once('views/footer.php');
+			exit;
+		}
 		require_once('views/ranking.php');
 		break;
 	case "fixtures":
+		if (! $_SESSION['uid'] ){
+			require_once('views/header.php');
+                echo '<p style="color: white;
+                text-align: center;margin-top : 5%">Trebuie sa te loghezi ca sa poti benificia de aceasta functionalitate</p>';
+            	require_once('views/footer.php');
+			exit;
+		}
         	require_once('views/fixtures.php');
         	break;
 	case "players":

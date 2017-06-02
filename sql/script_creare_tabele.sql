@@ -311,5 +311,13 @@ begin
    update global_date set nr_echipe_campionat=nr_echipe_campionat+1 ,nr_echipe_grupa=nr_echipe_grupa+1;
 end global_date_echipe;
 /
+create or replace procedure inserare_echipe_clasament as 
+cursor curs is Select * from echipe;
+begin
+  for indx in curs LOOP
+    insert into clasament(id_echipa,grupa) values(indx.id,1);
+  end loop;
+end inserare_echipe_clasament;
+/
 Commit;
 /

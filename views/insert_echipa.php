@@ -11,10 +11,41 @@ if(!isset($_REQUEST['tara']))
 	{
 		if($item['name']==$_REQUEST['nume_echipa'])
 		{
-			$sql="Insert into echipe(nume,logo,tara) values('".$item['name'];
-			$sql.="','".$item['crestUrl']."',1)";
+			$sql="select * from global_date";
 			$statement=oci_parse($db,$sql);
 			oci_execute($statement);
+			$row=oci_fetch_array($statement);
+
+			if($row['TIP_CAMPIONAT']=='campionat')
+			{
+				if($row['NR_MAXIM_ECHIPE_CAMPIONAT']>$row['NR_ECHIPE_CAMPIONAT'])
+				{	
+					$sql="Insert into echipe(nume,logo,tara) values('".$item['name'];
+					$sql.="','".$item['crestUrl']."',1)";
+					$statement=oci_parse($db,$sql);
+					oci_execute($statement);
+					$sql="update global_date set NR_ECHIPE_CUPA=".($row['NR_ECHIPE_CUPA']+1);
+					$statement=oci_parse($db,$sql);
+					oci_execute($statement);
+					break;
+				}
+
+			}
+			else
+			{
+				if($row['NR_MAXIM_ECHIPE_CUPA']>$row['NR_ECHIPE_CUPA']*4)
+				{	
+					$sql="Insert into echipe(nume,logo,tara) values('".$item['name'];
+					$sql.="','".$item['crestUrl']."',1)";
+					$statement=oci_parse($db,$sql);
+					oci_execute($statement);
+					$sql="update global_date set NR_ECHIPE_CUPA=".($row['NR_ECHIPE_CUPA']+1);
+					$statement=oci_parse($db,$sql);
+					oci_execute($statement);
+					break;
+				}
+
+			}
 		}
 	}
 }

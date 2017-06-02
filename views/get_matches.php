@@ -45,8 +45,8 @@
             <td><?php echo $row['ECHIPA2']?></td>
             <td><?php echo $row['ID_GRUPA']?></td>
             
-     	    <td ><div class="reviewpoll"><a href="index.php?action=reviews&id_meci=<?php echo $row['ID']?>" style="color: black"><center> REVIEW </center></a></div></td>
-            <td><div class="reviewpoll"><a href="index.php?action=poll&id_meci=<?php echo $row['ID']?>" style="color: black"><center> POLL </center></a></div></td>
+     	    <td ><div class="reviewpoll"><a href="index.php?action=reviews&id_meci=<?php echo $row['ID']?>" style="color: white"><center> REVIEW </center></a></div></td>
+            <td><div class="reviewpoll"><a href="index.php?action=poll&id_meci=<?php echo $row['ID']?>" style="color: white"><center> POLL </center></a></div></td>
 			</div></tr>
 	<?php } ?>
 	</table>

@@ -106,9 +106,8 @@
 		if(empty($password))
 			throw new Exception('The password doesnt exist. Retry.');
 
-		//print_r($username);
-		//print_r($password);
-		$interogare="Select weball_user.exista_user("."'".$username."'".","."'".$password."') from dual";
+		
+		$interogare="Select count(*) ,id from utilizator where username='".$username."' and parola='".$password ."' group by id";
 	//	$interogare="Select * from users";
 		$q=oci_parse($db, $interogare);
 		$result=oci_execute($q);

@@ -12,7 +12,7 @@
  	 </tr>
  	<?php  
    $db=oci_connect('student','STUDENT','localhost/XE');
-   $sql="select clasament.id, echipe.nume , echipe.id_grupa ,golaveraj,goluri_date, goluri_primite,victorii,infrangeri,egaluri,punctaj from clasament join echipe on clasament.id_echipa=echipe.id where echipe.id_grupa=".$_REQUEST['grupa'];
+	   $sql="select (select nume from echipe where id=id_echipa) as nume,Victorii,Infrangeri,Egaluri,GOLURI_DATE,GOLURI_PRIMITE,Golaveraj,Punctaj from clasament where grupa=".$_REQUEST['grupa'];
    echo '<br>';
    $statement=oci_parse($db,$sql);
    $result=oci_execute($statement);

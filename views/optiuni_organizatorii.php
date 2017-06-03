@@ -7,6 +7,7 @@ $row=oci_fetch_array($statement);
 if($row[0]!='necunoscut')
 {
 ?>
+	<div class="organisation-options">
 	<?php 
 		$sql="Select * from global_date";
 		$statement=oci_parse($db,$sql);
@@ -33,3 +34,11 @@ if($row[0]!='necunoscut')
 
 <a href="index.php?action=seteaza_model_organizational" style="float: center;"><button>Set Organizational model</button></a>
 <?php }?>
+</div>    
+<style>
+    .organisation-options{
+    margin: 5% 37% auto 37%;
+    width: 26%;
+    }
+</style>    
+		

@@ -2,7 +2,7 @@
 <?php require_once('header.php') ?>
 
 
-<form class="modal-content animate" action="http://localhost:8181/TW/index.php?action=reviews&id_meci=<?php echo $_REQUEST['id_meci']?>" method="POST" style="width: 30%;height:20%">
+<form class="modal-content animate" action="index.php?action=reviews&id_meci=<?php echo $_REQUEST['id_meci']?>" method="POST" style="width: 30%;height:20%">
  
 	<div class="container">
     <label style="height:100%"><b><center>You really want to delete the review?</center></b></label>

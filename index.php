@@ -159,26 +159,25 @@ switch($action){
 		require_once('views/admin_elimina_cont.php');
 		break;
 	case "update_scor_meci":
-		$sql="update meciuri set rezultat1=".$_REQUEST['goluri_echipa_gazda'];
+		if(isset($_REQUEST['goluri_echipa_gazda'])){
+		    $sql="update meciuri set rezultat1=".$_REQUEST['goluri_echipa_gazda'];
 			$sql.=" ,rezultat2=".$_REQUEST['goluri_echipa_oaspete'];
 			$sql.=" where id=".$_REQUEST['id_meci'];
-			$statement=oci_parse($db,$sql);
+			$statement=oci_parse($db ,$sql);
+      		$result=oci_execute($statement);
+            }
 		if (isset($_REQUEST['set_score']))
 		{
-			
-			header("Location: index.php?action=update_scoruri");
+			$sql = "select username , parola , email , rol from utilizator where username ='".$_SESSION['username']."'";
+      		$statement=oci_parse($db ,$sql);
+      		$result=oci_execute($statement);
+			header("Location: index.php?action=update_scoruri&find_on=1&id_meci=". $_REQUEST['id_meci']); 
 			die();
 		}
 		require_once('views/update_scor_meci.php');
 		break;
 	case "update_scoruri":
-		      $sql='Select nume from echipe';
-		      $echipe=oci_parse($db,$sql);
-             	      $echipe1=oci_parse($db,$sql);
-		      oci_execute($echipe);
-		      oci_execute($echipe1);
-			require_once('views/update_scoruri.php');
-
+		require_once('views/update_scoruri.php');
 		break;
 	case "register":
 		require_once('class/class.user.php');

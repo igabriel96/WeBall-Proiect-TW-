@@ -8,6 +8,13 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "insert_poll":
+		require_once('views/insert_poll.php');
+		header('Location: index.php?action=optiuni_organizatorii');
+		break;
+	case "create_poll":
+		require_once('views/create_poll.php');
+		break;
 	case "delete_review":
 		require_once('views/delete_review.php');
 		break;

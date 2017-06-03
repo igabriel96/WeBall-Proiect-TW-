@@ -41,7 +41,7 @@ if(isset($_REQUEST['yes']) || isset($_REQUEST['no'])){
 }
 }    
     
-if(isset($_REQUEST['id_review'])) {
+if(isset($_REQUEST['editreview'])) {
 
     
     $sql="select rol from utilizator where username = '".$_SESSION['username']."'";
@@ -111,15 +111,11 @@ $sql="Select review.id , username ,data_review,text from review join utilizator 
               <div class="review-text">  
                 <p> <?php echo oci_result($statement,'TEXT'); ?></p>
               </div>
-              <div class="review-edit-delete">
-                   <a href="index.php?action=edit_review&id_review=
-                   <?php echo oci_result($statement,'ID')?>&id_meci=
-                   <?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Edit</a>
+               <div class="review-edit-delete">
+                  <a href="index.php?action=edit_review&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Edit</a>
               </div> 
               <div class="review-edit-delete">
-                 <a href="index.php?action=delete_review&id_review=
-                          <?php echo oci_result($statement,'ID')?>&id_meci=
-                          <?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Delete</a>
+                 <a href="index.php?action=delete_review&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Delete</a>
               </div>
             </div> 
             </div>

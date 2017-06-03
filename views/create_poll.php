@@ -3,7 +3,7 @@
 	<form action="index.php?action=insert_poll" method="POST">
     <div class="container" style="border:1px solid white;margin-left:33.5%;height:50%;width:30%">
         <label style="color:white;margin-left:30%;margin-bottom:10%"><b>Choose the match</b></label><br><br>
-        <select name="id_meci"><?php
+        <select name="id_meci" style="padding:6px 10px;width:32%;margin-left: 35%" ><?php
         $sql="select (select nume from echipe where id=id_echipa1) as echipa1 , (select nume from echipe where id=id_echipa2) as echipa2 ,id from meciuri";
         $statement=oci_parse($db, $sql);
         oci_execute($statement);

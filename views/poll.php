@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php require_once('header.php') ?>
-<fieldset style="width: 50%;text-align: center" >
+<fieldset style="width: 25%;text-align: center" >
 	<?php
 		$sql="Select * from poll where id_meci=".$_REQUEST['id_meci'];
 		$statement=oci_parse($db, $sql);
@@ -8,7 +8,7 @@
 		$row=oci_fetch_array($statement);
 		 ?>
 	<legend><?php echo $row['INTREBARE']; ?></legend>
-	<form action="index.php?show_poll" id="form1" name="form1" method="GET" style="text-align: left">
+	<form action="index.php?show_poll" id="form1" name="form1" method="GET" style="text-align: left;color:white">
 		<?php
 		$contor=1;
 		while(isset(($row['RASPUNS'.$contor])))

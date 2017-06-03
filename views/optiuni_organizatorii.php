@@ -27,7 +27,6 @@ if($row[0]!='necunoscut')
 	?>
 
 	<a href="index.php?action=inregistreaza_jucator" style="float: center;"><button>Register player</button></a>
-	<a href="index.php?action=sterge_echipa" style="float: center;"><button>Set teams</button></a>
 	<a href="index.php?action=delete_database" style="float: center;"><button>Delete database</button></a>
 <?php }else{ ?>
 

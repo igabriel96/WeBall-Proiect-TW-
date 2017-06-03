@@ -341,5 +341,26 @@ BEGIN
   FROM   dual;
 END;
 /
+Drop table vote_poll;
+/
+create table vote_poll(id integer,id_poll integer,id_utilizator integer,optiune integer);
+/
+ALTER TABLE vote_poll ADD (
+  CONSTRAINT vote_poll_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE vote_poll_seq;
+/
+CREATE SEQUENCE vote_poll_seq START WITH 1;
+/
+CREATE OR REPLACE TRIGGER vote_poll_bir 
+BEFORE INSERT ON vote_poll
+FOR EACH ROW
+
+BEGIN
+  SELECT vote_poll_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
 Commit;
 /

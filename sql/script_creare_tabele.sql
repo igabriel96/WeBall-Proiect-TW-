@@ -319,5 +319,27 @@ begin
   end loop;
 end inserare_echipe_clasament;
 /
+drop table poll;
+/
+create table poll(id integer ,id_meci integer ,intrebare varchar2(255) ,raspuns1 varchar2(100),raspuns2 varchar2(100),
+raspuns3 varchar2(100) ,raspuns4 varchar2(100) ,raspuns5 varchar2(100) ,vot1 integer,vot2 integer,vot3 integer,vot4 integer,vot5 integer);
+/
+ALTER TABLE poll ADD (
+  CONSTRAINT poll_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE poll_seq;
+/
+CREATE SEQUENCE poll_seq START WITH 1;
+/
+CREATE OR REPLACE TRIGGER poll_bir 
+BEFORE INSERT ON poll
+FOR EACH ROW
+
+BEGIN
+  SELECT poll_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
 Commit;
 /

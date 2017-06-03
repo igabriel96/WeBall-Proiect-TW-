@@ -82,7 +82,7 @@ if(isset($_REQUEST['id_review'])) {
  	<form action="index.php?action=reviews&id_meci=<?php echo $_REQUEST['id_meci'];?>" method="post">
  	<input type="text"  name="text" placeholder="Insert review..." style="margin-left:0.8%;width:98.5%">
  	<button type="submit" style="width:15.5%;margin-left:0.8%" >Post Review</button>
-    <button type="reset" value="Reset" style="width:15.5%;margin-left:0.1%">Cancel</button>
+    <button  onclick="this.parentElement.style.display='none'" style="width:15.5%;margin-left:0.1%">Cancel</button>
  	</form>
  </div>
 <?php 

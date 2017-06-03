@@ -11,22 +11,22 @@
         	echo '<option value="'.$row['ID'].'" >'.$row['ECHIPA1'].'-'.$row['ECHIPA2'].'</option>';
          ?>
       </select><br>
-     <label >Question</label><br>
+     <label style="color:white">Question :</label><br>
      <input type="text" name="intrebare" required="">
      <div id="raspuns1" >
-     <label>Answer 1</label><br>
-     <input type="text" required="" onkeypress ="document.getElementById('raspuns2').style.display='inline'" " name="raspuns1"><br>
+     <label style="color:white">Answer 1 :</label><br>
+     <input type="text" onkeypress ="document.getElementById('raspuns2').style.display='inline'"  name="raspuns1" required><br>
      </div>
       <div id="raspuns2" requierd   onkeypress="document.getElementById('raspuns3').style.display='inline'" style="display: none">
-     <label>Answer 2</label><br>
+     <label style="color:white">Answer 2 :</label><br>
      <input type="text"  onkeypress="document.getElementById('raspuns3').style.display='inline'" name="raspuns2"><br>
      </div>
       <div id="raspuns3" onkeypress="document.getElementById('raspuns4').style.display='inline'" style="display: none">
-     <label>Answer 3</label><br>
+     <label style="color:white">Answer 3 :</label><br>
      <input type="text" name="raspuns3"><br>
      </div>
        <div id="raspuns4" style="display: none">
-     <label>Answer 4</label><br>
+     <label style="color:white">Answer 4 :</label><br>
      <input type="text" name="raspuns4"><br>
      </div>
      <button type="submit" style="width:55%;margin-left:24%">Create poll</button>

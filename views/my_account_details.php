@@ -1,6 +1,5 @@
 
 <?php require_once('header.php') ?>
-<link rel="stylesheet" type="text/css" href="views/my_account_details.css">
 
 <?php 
     
@@ -105,10 +104,16 @@
          text-align: center;
          margin-left: 2%;
      }
+     .update:hover {
+      background-color: #00264d;
+     }
      .delete{
          float : left;
          width: 47%;
          text-align: center;
+     }
+     .delete:hover {
+      background-color: #00264d;
      }
 
 

@@ -45,7 +45,11 @@ if($_REQUEST['username'] != NULL)
                 <?php echo $row['EMAIL']?>
               </td>
               <td>
-                <?php echo $row['ROL']?>
+                 <?php  if($row['ROL'] == 'admin') {
+               echo '<span style="color:red">'.$row['ROL'].'</span> ';
+                } else {
+                 echo $row['ROL'];
+                }?>
               </td>
               <td>      
                 <div class="reviewpoll"><a href="index.php?action=sterge_cont&username=<?php echo $row['USERNAME']?>" style="color: white"><center> DELETE ACCOUNT </center></a></div>   
@@ -85,7 +89,11 @@ if($_REQUEST['username'] != NULL)
                 <?php echo $row['EMAIL']?>
               </td>
               <td>
-                <?php echo $row['ROL']?>
+                  <?php  if($row['ROL'] == 'admin') {
+               echo '<span style="color:red">'.$row['ROL'].'</span> ';
+                } else {
+                 echo $row['ROL'];
+                }?>
               </td>
               <td>      
                 <div class="reviewpoll"><a href="index.php?action=sterge_cont&username=<?php echo $row['USERNAME']?>" style="color: white"><center> DELETE ACCOUNT </center></a></div>   

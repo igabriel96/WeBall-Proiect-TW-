@@ -165,10 +165,11 @@ switch($action){
 		require_once('views/update_scor_meci.php');
 		break;
 	case "update_scoruri":
-			$sql="select meciuri.id as ID, data_meci as DATA ,e1.nume ECHIPA_GAZDA,e2.nume as ECHIPA_OASPETE,rezultat1 as REZ1,rezultat2 as REZ2 from meciuri join echipe e1 on meciuri.id_echipa1=e1.id join echipe e2 on meciuri.id_echipa2=e2.id where upper(e1.nume)=upper('";
-			$sql.=$_REQUEST['echipa_gazda']."') and upper(e2.nume)=upper('".$_REQUEST['echipa_oaspete']."')";
-			$statement=oci_parse($db ,$sql);
-			$result=oci_execute($statement);
+		      $sql='Select nume from echipe';
+		      $echipe=oci_parse($db,$sql);
+             	      $echipe1=oci_parse($db,$sql);
+		      oci_execute($echipe);
+		      oci_execute($echipe1);
 			require_once('views/update_scoruri.php');
 
 		break;

@@ -221,6 +221,30 @@ span.psw {
     float:right;
     border: 1px solid white;
 }
+.alert-reviews {
+    padding: 20px;
+    color: white;
+    width : 40%;
+    margin-left: 29%;
+    margin-right:30%;
+    text-align: center;
+    border : 1px solid white;
+}
+
+.closebtn-reviews{
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn-reviews:hover {
+    color: black;
+}
 .poll-body { 
 	font-size: 62.5%; 
 	font-family: Georgia, serif;

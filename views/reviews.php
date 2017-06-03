@@ -2,9 +2,41 @@
 <?php require_once('header.php') ?>
 <?php 
 if(isset($_REQUEST['id_review'])) {
-  $sql="update review set text ='".$_REQUEST['editreview']."' where id = ".$_REQUEST['id_review'];
+    /*$sql="select id_utilizator from review where id = ".$_REQUEST['id_review'];
     $statement=oci_parse($db,$sql);
-    oci_execute($statement);                                                                                              
+    oci_execute($statement);
+    $row=oci_fetch_row($statement);*/
+    
+    $sql="select rol from utilizator where username = '".$_SESSION['username']."'";
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+    $row=oci_fetch_row($statement);
+    
+     $sql="select id_utilizator from review where id = ".$_REQUEST['id_review'];
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+    $row1=oci_fetch_row($statement);
+    
+    $sql="select id from utilizator where username = '".$_SESSION['username']."'";
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+    $row2=oci_fetch_row($statement);
+    
+    
+    
+    if($row[0] == 'admin' || $row1[0] == $row2[0])
+    {
+    $sql="update review set text ='".$_REQUEST['editreview']."' where id = ".$_REQUEST['id_review'];
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+    }
+    else
+    {
+       ?> <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong> Nu poti edita reviewul altui user decat daca esti admin! </strong>
+    </div> <?php
+    }
 } ?>
 <div class="container">
 <button onclick="document.getElementById('review_block').style.display='block'">Add review</button>

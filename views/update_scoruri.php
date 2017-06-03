@@ -4,7 +4,7 @@
 	<form action="http://localhost:8181/TW/index.php?action=update_scoruri&find_on=1" method="POST">
     <div class="container" style="border:1px solid white;margin-left:33.5%;height:50%;width:30%">
         <label style="color:white;margin-left:30%;margin-bottom:10%"><b>Choose the teams</b></label><br><br>
-     <label style="color:white;margin-left:25%"><b>Gest team</b></label>
+     <label style="color:white;margin-left:25%"><b>Host team</b></label>
     <select name="echipa1" style="padding:6px 10px;width:120px;margin-left:1%">
         <?php
           while(oci_fetch($echipe)){ ?>
@@ -12,7 +12,7 @@
           <?php }?>
       </select><br>
       
-     <label style="color:white;margin-left:25%"><b>Host team</b></label>
+     <label style="color:white;margin-left:25%"><b>Gest team</b></label>
      <select name="echipa2" style="padding:6px 10px;width:120px;margin-left:0.8%">
         <?php
           while(oci_fetch($echipe1)){ ?>

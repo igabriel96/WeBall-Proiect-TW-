@@ -28,6 +28,7 @@ if($row[0]!='necunoscut')
 
 	<a href="index.php?action=inregistreaza_jucator" style="float: center;"><button>Register player</button></a>
 	<a href="index.php?action=delete_database" style="float: center;"><button>Delete database</button></a>
+		<a href="index.php?action=create_poll" style="float:center;"><button>Create poll</button></a>
 <?php }else{ ?>
 
 <a href="index.php?action=seteaza_model_organizational" style="float: center;"><button>Set Organizational model</button></a>

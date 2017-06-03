@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <?php require_once('header.php') ?>
 <?php 
-if(isset($_REQUEST['id_review'])) {
-    /*$sql="select id_utilizator from review where id = ".$_REQUEST['id_review'];
+ 
+if(isset($_REQUEST['yes']) || isset($_REQUEST['no'])){
+
+    $sql="select rol from utilizator where username = '".$_SESSION['username']."'";
     $statement=oci_parse($db,$sql);
     oci_execute($statement);
-    $row=oci_fetch_row($statement);*/
+    $row=oci_fetch_row($statement);
+    
+     $sql="select id_utilizator from review where id = ".$_REQUEST['id_review'];
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+    $row1=oci_fetch_row($statement);
+    
+    $sql="select id from utilizator where username = '".$_SESSION['username']."'";
+    $statement=oci_parse($db,$sql);
+    oci_execute($statement);
+    $row2=oci_fetch_row($statement);
+     
+     if(!isset($_REQUEST['no'])){
+     if(($row[0] == 'admin' &&  isset($_REQUEST['yes'])) || ($row1[0] == $row2[0] &&  isset($_REQUEST['yes'])))
+    {
+    
+           $sql="delete from review where id =".$_REQUEST['id_review'];
+		   $statement=oci_parse($db ,$sql);
+           $result=oci_execute($statement);
+    
+    }
+    else
+    {
+       ?> <div class="alert-reviews">
+    <span class="closebtn-reviews" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong> Nu poti sterge reviewul altui user doar daca esti admin! </strong>
+    </div> <?php
+    }
+    
+    
+    
+}
+}    
+    
+if(isset($_REQUEST['id_review'])) {
+
     
     $sql="select rol from utilizator where username = '".$_SESSION['username']."'";
     $statement=oci_parse($db,$sql);
@@ -80,7 +117,9 @@ $sql="Select review.id , username ,data_review,text from review join utilizator 
                    <?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Edit</a>
               </div> 
               <div class="review-edit-delete">
-                 Delete
+                 <a href="http://localhost:8181/TW/index.php?action=delete_review&id_review=
+                          <?php echo oci_result($statement,'ID')?>&id_meci=
+                          <?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Delete</a>
               </div>
             </div> 
             </div>

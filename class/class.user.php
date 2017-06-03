@@ -121,7 +121,7 @@
 			throw new Exception("Userul nu exista");
 			
 		}
-		$id =$row[0];
+		$id =$row[1];
 		//verificare rol user
 		$sql="Select rol from utilizator where username=:nume and parola=:password";
 		$statement=oci_parse($db,$sql);

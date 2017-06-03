@@ -12,7 +12,7 @@
           <?php }?>
       </select><br>
       
-     <label style="color:white;margin-left:25%"><b>Gest team</b></label>
+     <label style="color:white;margin-left:25.5%"><b>Gest team</b></label>
      <select name="echipa2" style="padding:6px 10px;width:120px;margin-left:0.8%">
         <?php
           while(oci_fetch($echipe1)){ ?>

@@ -41,4 +41,4 @@ if($row[0]!='necunoscut')
     width: 26%;
     }
 </style>    
-		
+<?php require_once('footer.php') ?>		

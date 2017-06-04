@@ -3,46 +3,82 @@
 <?php 
 
 if(isset($_REQUEST['yes_react']) || isset($_REQUEST['no_react'])){
-     $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."'";
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-        $testare=oci_fetch_row($statement);
-    if($testare[0] == 0){
-    if($_REQUEST['id_reactie']==3)
-    {
-        $sql="update review set nr_likes = nr_likes + 1 where id =".$_REQUEST['id_review'];
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-        $sql="insert into reactii(id_reactie,id_review,utilizator) values('".$_REQUEST['id_reactie']."','".$_REQUEST['id_review']."','".$_SESSION['username']."')";
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-    }
-    if($_REQUEST['id_reactie']==2)
-    {  
-        $sql="update review set nr_dislikes = nr_dislikes + 1 where id =".$_REQUEST['id_review'];
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-        $sql="insert into reactii(id_reactie,id_review,utilizator) values('".$_REQUEST['id_reactie']."','".$_REQUEST['id_review']."','".$_SESSION['username']."')";
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-    }
-     if($_REQUEST['id_reactie']==1)
-    {  
-        $sql="update review set nr_loves = nr_loves + 1 where id =".$_REQUEST['id_review'];
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-        $sql="insert into reactii(id_reactie,id_review,utilizator) values('".$_REQUEST['id_reactie']."','".$_REQUEST['id_review']."','".$_SESSION['username']."')";
-        $statement=oci_parse($db,$sql);
-        oci_execute($statement);
-    }
-    }
-    else
-    {
-         ?> <div class="alert-reviews">
-    <span class="closebtn-reviews" onclick="this.parentElement.style.display='none';">&times;</span> 
-    <strong> Nu poti reactiona de doua ori la acelasi review! </strong>
-    </div> <?php
-    }
+
+    if(isset($_REQUEST['yes_react']))
+        {
+        if($_REQUEST['id_reactie']==3)
+        {   
+             $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' and id_reactie =".$_REQUEST['id_reactie'];
+            $statement=oci_parse($db,$sql);
+            oci_execute($statement);
+            $testare=oci_fetch_row($statement);
+            if($testare[0] == 0){
+                $sql="update review set nr_likes = nr_likes + 1 where id =".$_REQUEST['id_review'];
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+                $sql="insert into reactii(id_reactie,id_review,utilizator) values('".$_REQUEST['id_reactie']."','".$_REQUEST['id_review']."','".$_SESSION['username']."')";
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+            }
+            else
+            {
+                $sql="update review set nr_likes = nr_likes - 1 where id =".$_REQUEST['id_review'];
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+                $sql="delete from reactii where id_reactie=".$_REQUEST['id_reactie']." and id_review =".$_REQUEST['id_review']." and utilizator ='".$_SESSION['username']."'";
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+            }
+        }
+        if($_REQUEST['id_reactie']==2)
+            {  
+            $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' and id_reactie =".$_REQUEST['id_reactie'];
+            $statement=oci_parse($db,$sql);
+            oci_execute($statement);
+            $testare=oci_fetch_row($statement);
+            if($testare[0] == 0){
+                $sql="update review set nr_dislikes = nr_dislikes + 1 where id =".$_REQUEST['id_review'];
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+                $sql="insert into reactii(id_reactie,id_review,utilizator) values('".$_REQUEST['id_reactie']."','".$_REQUEST['id_review']."','".$_SESSION['username']."')";
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+            }
+            else
+            {
+                $sql="update review set nr_dislikes = nr_dislikes - 1 where id =".$_REQUEST['id_review'];
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+                $sql="delete from reactii where id_reactie=".$_REQUEST['id_reactie']." and id_review =".$_REQUEST['id_review']." and utilizator ='".$_SESSION['username']."'";
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+            }
+            }
+      if($_REQUEST['id_reactie']==1)
+        {  
+            $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' and id_reactie =".$_REQUEST['id_reactie'];
+            $statement=oci_parse($db,$sql);
+            oci_execute($statement);
+            $testare=oci_fetch_row($statement);
+            if($testare[0] == 0){
+                $sql="update review set nr_loves = nr_loves + 1 where id =".$_REQUEST['id_review'];
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+                $sql="insert into reactii(id_reactie,id_review,utilizator) values('".$_REQUEST['id_reactie']."','".$_REQUEST['id_review']."','".$_SESSION['username']."')";
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+            }
+            else
+            {
+                $sql="update review set nr_loves = nr_loves - 1 where id =".$_REQUEST['id_review'];
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+                $sql="delete from reactii where id_reactie=".$_REQUEST['id_reactie']." and id_review =".$_REQUEST['id_review']." and utilizator ='".$_SESSION['username']."'";
+                $statement=oci_parse($db,$sql);
+                oci_execute($statement);
+            }
+        }
+        }
 }
     
 if(isset($_REQUEST['yes']) || isset($_REQUEST['no'])){
@@ -161,19 +197,29 @@ $sql="Select review.id , username ,data_review,text,nr_likes,nr_dislikes,nr_love
                  <a href="index.php?action=delete_review&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>"style="text-decoration:none;color: white">Delete</a>
               </div>
             </div>
-            <div class="review-reacts">
+             <div class="review-reacts">
             <div class="review-reactions">
-                <a href="index.php?action=review_reaction&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>&id_reactie=1"><img src="http://i.imgur.com/y7qZQS3.png" width="42px" height="42px"></a>
+                <a href="index.php?action=review_reaction&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>&id_reactie=1"><img src="http://i.imgur.com/y7qZQS3.png" width="26px" height="26px"></a>
+                </div>
+                <div class="nr-reactions">
                 <?php echo oci_result($statement, 'NR_LOVES'); ?>
-            </div>
+                </div>
+                </div>
+            <div class="review-reacts">    
             <div class="review-reactions">
-                <a href="index.php?action=review_reaction&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>&id_reactie=2" ><img src=" https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/thumbs-down-circle-red-512.png" width="40px" height="40px"></a>
+                <a href="index.php?action=review_reaction&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>&id_reactie=2" ><img src=" https://cdn1.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/thumbs-down-circle-red-512.png" width="25px" height="25px"></a>
+                </div>
+                <div class="nr-reactions">
                 <?php echo oci_result($statement, 'NR_DISLIKES'); ?>
-            </div>
+                </div>
+                </div>
+            <div class="review-reacts">    
             <div class="review-reactions">
-                <a href="index.php?action=review_reaction&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>&id_reactie=3"><img  src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg" width="40px" height="40px"></a>
+                <a href="index.php?action=review_reaction&id_review=<?php echo oci_result($statement,'ID')?>&id_meci=<?php echo $_REQUEST['id_meci']?>&id_reactie=3"><img  src="https://cdn.worldvectorlogo.com/logos/facebook-like.svg" width="25px" height="25px"></a>
+                </div>
+                <div class="nr-reactions">
                 <?php echo oci_result($statement, 'NR_LIKES'); ?>
-            </div>
+                </div>
             </div>
             </div>
             <hr>

@@ -8,6 +8,10 @@ $action = '';
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 
 switch($action){
+	case "insert_vote_poll":
+		require_once('views/insert_vote_poll.php');
+		header('Location: index.php?action=matches');
+		break;
 	 case "review_reaction";
         	require_once('views/review_reaction.php');
 		break;

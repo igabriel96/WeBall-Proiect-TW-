@@ -205,32 +205,37 @@ span.psw {
 .review{
    float:left;
    border-right: 1px solid white;
-   width: 16.5%;
+   width: 11%;
+   font-size: 16px;
 }
 .review-right-side{
-    width: 82%;
-    margin-left: 18%;
+    width: 88%;
+    margin-left: 12%;
 }
 .review-text{
-    width:80%;
+    width:83%;
     float:left;
+    font-size:20px;
+    margin-bottom: 2%;
 }
 .review-edit-delete{
     text-align: center;
     width: 8%;
     float:right;
     border: 1px solid white;
+    font-size:20px;
 }
 .review-reacts{
         width:3%;
-        margin-top: 4.5%;
+        margin-top: 2%;
         display: inline-block;
         float:right;
-}
-.review-reactions{
+        font-size:20px;
+    }
+    .review-reactions{
         float:left;
         margin-right: 10%;
- }
+    }
 .alert-reviews {
     padding: 20px;
     color: white;

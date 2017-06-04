@@ -389,4 +389,18 @@ image{
     margin-left:37.5%;
 }
 
+
+h6 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+.results-bar {
+    font-size: 0.8em;
+    color: white;
+    background: url(blue20.jpg) left center;
+    white-space: nowrap;
+}
+span.total-votes {
+    font-size: 2.6em;
+}
 </style>

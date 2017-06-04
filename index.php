@@ -136,9 +136,6 @@ switch($action){
 		require_once('views/players.php');
 		break;
 	case "inregistreaza_jucator":
-		$sql='Select distinct nationalitate from jucatori';
-		$tari=oci_parse($db,$sql);
-		oci_execute($tari);
 		$sql='Select nume from echipe';
 		$echipe=oci_parse($db,$sql);
 		oci_execute($echipe);

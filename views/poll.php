@@ -73,14 +73,16 @@
 				oci_execute($statement3);
 				$row3=oci_fetch_array($statement3);
 				$contor=1;
+				echo '<br>';
+				echo '<br>';
 				echo '<fildset>';
 				echo '<legend> Results for "'.$row3[0].'"</legend>';
 				echo '<ul>';
 				while(isset($row3[$contor]))
 				{
 						echo '<li >';
-							echo '<span >'.$nr_raspunsuri[$contor] .' votes : <span>  '.$row3[$contor];
-							echo '<br/>';
+							?><div style="margin-left:10%"><?php echo '<span>'.$nr_raspunsuri[$contor] .' votes : <span>  '.$row3[$contor];
+							echo '<br/>';?></div><?php
 							if($nr_raspunsuri_totale>0)
 							{
 								echo '<div class="results-bar" style="width:'.round(round(($nr_raspunsuri[$contor]/($nr_raspunsuri_totale))*100,2)*(4/5),2).'%;">';

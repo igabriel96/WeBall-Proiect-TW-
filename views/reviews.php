@@ -3,10 +3,29 @@
 <?php 
 
 if(isset($_REQUEST['yes_react']) || isset($_REQUEST['no_react'])){
-
+$ok1 = 0; $ok2 = 0; $ok3 = 0;
     if(isset($_REQUEST['yes_react']))
         {
-        if($_REQUEST['id_reactie']==3)
+        
+        $sql="select count(*) , id_reactie from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' group by id_reactie";
+        $statement=oci_parse($db,$sql);
+        oci_execute($statement);
+        $okay=oci_fetch_row($statement);
+        if($okay[0] == 0 ){
+            $ok1 = 1 ;
+            $ok2 = 1 ;
+            $ok3 = 1 ;
+        }    
+        else
+        { 
+            if($okay[1]==1)
+                $ok1 = 1 ;
+            if($okay[1]==2)
+                $ok2 = 1;
+            if($okay[1]==3)
+                $ok3 = 1;
+        }
+        if($_REQUEST['id_reactie']==3 && $ok3 == 1)
         {   
              $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' and id_reactie =".$_REQUEST['id_reactie'];
             $statement=oci_parse($db,$sql);
@@ -30,7 +49,7 @@ if(isset($_REQUEST['yes_react']) || isset($_REQUEST['no_react'])){
                 oci_execute($statement);
             }
         }
-        if($_REQUEST['id_reactie']==2)
+        if($_REQUEST['id_reactie']==2 && $ok2 == 1)
             {  
             $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' and id_reactie =".$_REQUEST['id_reactie'];
             $statement=oci_parse($db,$sql);
@@ -54,7 +73,7 @@ if(isset($_REQUEST['yes_react']) || isset($_REQUEST['no_react'])){
                 oci_execute($statement);
             }
             }
-      if($_REQUEST['id_reactie']==1)
+      if($_REQUEST['id_reactie']==1 && $ok1 == 1)
         {  
             $sql="select count(*) from reactii where id_review =".$_REQUEST['id_review']." and utilizator = '".$_SESSION['username']."' and id_reactie =".$_REQUEST['id_reactie'];
             $statement=oci_parse($db,$sql);

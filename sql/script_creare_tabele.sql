@@ -9,7 +9,7 @@ DROP TABLE grupa
 /
 DROP TABLE clasament
 /
-DROP TABLE nationalitate
+DROP TABLE reactii
 /
 DROP TABLE utilizator
 /
@@ -188,7 +188,10 @@ id_utilizator Number(10) ,
 id_meci Number(10) ,
 text Varchar2(255),
 data_review timestamp(6)  default CURRENT_TIMESTAMP ,
-is_deleted number(10)
+is_deleted number(10),
+nr_likes number(10) default 0,  
+nr_dislikes number(10) default 0,
+nr_loves number(10) default 0
 )
 /
 ALTER TABLE review ADD (
@@ -204,6 +207,31 @@ FOR EACH ROW
 
 BEGIN
   SELECT review_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
+create table reactii(
+id NUMBER(10) ,
+id_reactie Number(10) ,
+id_review NUMBER(10),
+utilizator VARCHAR2(255) ,
+data_reactie timestamp(6)  default CURRENT_TIMESTAMP
+)
+/
+ALTER TABLE reactii ADD (
+  CONSTRAINT reactii_pk PRIMARY KEY (ID));
+/
+DROP SEQUENCE reactii_seq;
+/
+CREATE SEQUENCE reactii_seq START WITH 1;
+/
+CREATE OR REPLACE TRIGGER reactii_bir 
+BEFORE INSERT ON reactii
+FOR EACH ROW
+
+BEGIN
+  SELECT reactii_seq.NEXTVAL
   INTO   :new.id
   FROM   dual;
 END;

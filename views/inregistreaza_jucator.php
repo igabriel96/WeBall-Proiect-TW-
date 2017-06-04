@@ -13,21 +13,16 @@ if(!isset($_REQUEST['nume']))
       <label><b>Given Name</b></label>
       <input type="text"  maxlength="20" name="prenume"  placeholder="Insert the given name of the player" pattern="[a-zA-Z].{1,}" title="The given name of the player should have at least two letters">
       <label><b>Age</b></label><br>
-      <input type="number"  placeholder="Age" maxlength="2" title="Only numbers" name="varsta" min="16" max="45" style="padding:6px 10px;width:95px">
+      <input type="number"  placeholder="Age" maxlength="2" title="Only numbers" name="varsta" min="16" max="45" style="padding:6px 10px;width:120px">
       <br><label><b>Team</b></label><br>
-      <select name="echipa" style="padding:6px 10px;width:120px">
+      <select name="echipa" style="padding:6px 10px;width:145px">
         <?php
           while(oci_fetch($echipe)){ ?>
             <option value="<?php echo oci_result($echipe,'NUME')?>"><?php echo oci_result($echipe,'NUME')?></option>
           <?php }?>
       </select><br>
       <label><b>Nationality</b></label><br>
-      <select name="nationalitate" style="padding:6px 10px;width:120px">
-        <?php
-          while(oci_fetch($tari)){ ?>
-            <option value="<?php echo oci_result($tari,'NATIONALITATE')?>"><?php echo oci_result($tari,'NATIONALITATE')?></option>
-          <?php }?>
-      </select>
+      <input name="nationalitate" placeholder="Nationalitate" maxlength="20" style="padding:6px 10px;width:120px"> 
       <button type="Submit">Register player</button>
     </div>
   </form>

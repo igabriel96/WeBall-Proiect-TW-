@@ -221,10 +221,16 @@ span.psw {
     float:right;
     border: 1px solid white;
 }
-.review-reactions{
-    margin-top: 3.5%;
-    float:right;
+.review-reacts{
+        width:3%;
+        margin-top: 4.5%;
+        display: inline-block;
+        float:right;
 }
+.review-reactions{
+        float:left;
+        margin-right: 10%;
+ }
 .alert-reviews {
     padding: 20px;
     color: white;

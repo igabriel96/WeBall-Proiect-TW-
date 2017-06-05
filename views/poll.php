@@ -99,7 +99,7 @@
 						$contor++;
 				}
 				echo '</ul>';
-				echo '     <h6>Total votes:'.$nr_raspunsuri_totale.'</h6>';
+				echo '     <h6 style="color:white;margin-left:12.5%">Total votes:'.$nr_raspunsuri_totale.'</h6>';
 				echo "</fildset>";
 
 			}

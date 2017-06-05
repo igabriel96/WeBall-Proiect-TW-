@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<head>
+	 <link rel="alternate" type="application/atom+xml" 
+   href="data/rankingXML.php" title="Atom feed for ranking">
+</head>
 <script>
 var etape=<?php $sql="select count(distinct grupa) from clasament";
     $statement=oci_parse($db,$sql); 

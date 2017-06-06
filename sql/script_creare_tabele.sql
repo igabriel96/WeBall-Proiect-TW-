@@ -78,8 +78,8 @@ Create Table meciuri(
 id NUMBER(10),
 id_echipa1 Number(10) ,
 id_echipa2 Number(10) ,
-rezultat1 Number(2) default 0,
-rezultat2 Number(2) default 0,
+rezultat1 Number(2),
+rezultat2 Number(2),
 etapa number(2),
 id_grupa Number(10),
 data_meci date
@@ -312,7 +312,7 @@ Begin
     Select nr_maxim_echipe_campionat into nr_echipe from global_date where id=1;
     dbms_output.put_line(nr_echipe);
     contor2:=1;
-    while contor2 <=  nr_echipe loop
+    while contor2 <=  nr_echipe -1 loop
       contor3:=1;
       while contor3 <= nr_echipe/2 loop
         insert into meciuri(id_echipa1,id_echipa2,etapa) values(v1(contor3) ,v1(nr_echipe -contor3+1),contor2);  

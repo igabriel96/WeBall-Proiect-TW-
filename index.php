@@ -78,6 +78,9 @@ switch($action){
 	case "inregistreaza_echipa_reala":
 		require_once('views/inregistreaza_echipa_reala.php');
 		break;
+	case "inregistreaza_jucator_real":
+		require_once('views/inregistreaza_jucator_real.php');
+		break;
 	case "matches":
 		if (! $_SESSION['uid'] ){
 			require_once('views/header.php');

@@ -9,11 +9,19 @@
 <a href="index.php?action=players" style="float:left;"> <button>Players</button></a>
 <a href="index.php?action=matches" style="float:left;"><button>Matches</button></a>
 <a href="index.php?action=ranking" style="float:left;"> <button>Ranking</button></a>
-<a href="index.php?action=fixtures" style="float:left;"> <button>Fixtures</button></a>  	
-
-
-
-
+<?php
+$sql="Select * from  global_date";
+$statement=oci_parse($db,$sql);
+$result=oci_execute($statement);
+if($result)
+{
+	$row=oci_fetch_array($statement);
+	if($row['TIP_CAMPIONAT']=='cupa')
+	{
+	 	echo '<a href="index.php?action=fixtures" style="float:left;"> <button>Fixtures</button></a>';
+	}
+}	
+?> 	
 <?php if(!$_SESSION['uid']):?>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Register</button>
 <button  style="float:right;width:100px;" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Login</button>
@@ -26,9 +34,6 @@
 <?php }?>
 <a href="index.php?action=my_account_details" style="float:right;"><button> My Account</button></a>
 <?php endif;?>
-
-
-
 </div>
 <div id="id01" class="modal"><font size="5">
 

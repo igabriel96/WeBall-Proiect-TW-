@@ -1,5 +1,5 @@
 <?php require_once('header.php') ?>
-<form class="modal-content animate" action="http://localhost:8181/TW/index.php?action=insert_model_organizational" method="POST">
+<form class="modal-content animate" action="index.php?action=insert_model_organizational" method="POST">
  
 	<div class="container">
     <label><b>Organization type</b></label><br>

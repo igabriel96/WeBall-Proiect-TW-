@@ -27,7 +27,7 @@
 			fwrite($fp,'<title>Team</title>'."\n");
 			fwrite($fp,'<link href="http://weball.com/views/ranking" />'."\n");
 			fwrite($fp,'<content type="text/xml">'."\n");
-			fwrite($fp ,'<team>'.$row[0].'</team>'."\n");
+			fwrite($fp ,'<team>'.$row[1].'</team>'."\n");
 			fwrite($fp,'<rank>'.$contor.'</rank>'."\n");
 			fwrite($fp,'<wins>'.$row['VICTORII'].'</wins>'."\n");
 			fwrite($fp,'<loss>'.$row['INFRANGERI'].'</loss>'."\n");

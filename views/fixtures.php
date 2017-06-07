@@ -136,7 +136,7 @@ li +  li:before {
     text-decoration: none;
     bottom:0;
     position:fixed;
-    margin-left:37.5%;
+    margin-left:39%;
     font-size: 24px;
 }
 </style

@@ -11,14 +11,14 @@ insert into echipe (nume,logo,tara) values('Iasi','http://i.imgur.com/PF8oqHF.pn
 insert into echipe (nume,logo,tara) values('Petrolul','http://i.imgur.com/PNxGznl.png','Romania');
 insert into echipe (nume,logo,tara) values('Viitorul','http://i.imgur.com/5BjEyWX.png','Romania');
 insert into echipe (nume,logo,tara) values('Pandurii','http://i.imgur.com/nZF7dWH.png','Romania');
-insert into echipe (nume,logo,tara) values('Iasi2','http://i.imgur.com/PF8oqHF.png','Romania');
-insert into echipe (nume,logo,tara) values('Petrolul2','http://i.imgur.com/PNxGznl.png','Romania');
-insert into echipe (nume,logo,tara) values('Viitorul2','http://i.imgur.com/5BjEyWX.png','Romania');
-insert into echipe (nume,logo,tara) values('Pandurii2','http://i.imgur.com/nZF7dWH.png','Romania');
+insert into echipe (nume,logo,tara) values('Botosani','http://i.imgur.com/uLeiXm3.png','Romania');
+insert into echipe (nume,logo,tara) values('Chiajna','http://i.imgur.com/8zb3Sxe.png','Romania');
+insert into echipe (nume,logo,tara) values('Gaz Metan','http://i.imgur.com/rpNmbjm.png','Romania');
+insert into echipe (nume,logo,tara) values('Timisoara','http://i.imgur.com/n2KzPVs.png','Romania');
 update  echipe set id_grupa=1 where id=any(1,2,3,4);
 update  echipe set id_grupa=2 where id=any(5,6,7,8);
 update  echipe set id_grupa=3 where id=any(9,10,11,12);
-update  echipe set id_grupa=3 where id=any(13,14,15,16);
+update  echipe set id_grupa=4 where id=any(13,14,15,16);
 
 insert into jucatori(nume,prenume,nationalitate,varsta,id_echipa) values('Mutu','Adrian','Romana','38','1');
 insert into jucatori(nume,prenume,nationalitate,varsta,id_echipa) values('Hagi','Gica','Romana','42','2');

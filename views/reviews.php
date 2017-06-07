@@ -167,8 +167,8 @@ if(isset($_REQUEST['editreview'])) {
     }
     else
     {
-       ?> <div class="alert">
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+       ?> <div class="alert-reviews">
+    <span class="closebtn-reviews" onclick="this.parentElement.style.display='none';">&times;</span> 
     <strong> Nu poti edita reviewul altui user decat daca esti admin! </strong>
     </div> <?php
     }

@@ -11,11 +11,11 @@
 <a href="index.php?action=ranking" style="float:left;"> <button>Ranking</button></a>
 <?php
 $sql="Select * from  global_date";
-$statement=oci_parse($db,$sql);
-$result=oci_execute($statement);
+$statement7=oci_parse($db,$sql);
+$result7=oci_execute($statement7);
 if($result)
 {
-	$row=oci_fetch_array($statement);
+	$row7=oci_fetch_array($statement);
 	if($row['TIP_CAMPIONAT']=='cupa')
 	{
 	 	echo '<a href="index.php?action=fixtures" style="float:left;"> <button>Fixtures</button></a>';
